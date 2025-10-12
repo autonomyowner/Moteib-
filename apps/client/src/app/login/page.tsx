@@ -11,6 +11,7 @@ function LoginBody() {
   const [password, setPassword] = useState("")
   const [status, setStatus] = useState<string>("")
   const [loading, setLoading] = useState(true)
+  const [showResendOption, setShowResendOption] = useState(false)
 
   useEffect(() => {
     let mounted = true
@@ -41,10 +42,12 @@ function LoginBody() {
     })
     if (error) {
       // Provide more helpful error messages
-      if (error.message.includes("Invalid login credentials")) {
-        setStatus("❌ Invalid email or password. Please check your credentials and try again.")
+      if (error.message.includes("Invalid login credentials") || error.message.includes("Invalid")) {
+        setStatus("❌ Invalid email or password. If you just signed up, please verify your email first by clicking the link sent to your inbox.")
+        setShowResendOption(true)
       } else if (error.message.includes("Email not confirmed")) {
         setStatus("⚠️ Please verify your email address before logging in. Check your inbox for the confirmation link.")
+        setShowResendOption(true)
       } else {
         setStatus(`Error: ${error.message}`)
       }
@@ -60,6 +63,24 @@ function LoginBody() {
     setStatus(`Redirecting to ${provider}…`)
     const { error } = await supabase.auth.signInWithOAuth({ provider })
     if (error) setStatus(`Error: ${error.message}`)
+  }
+
+  const handleResendVerification = async () => {
+    if (!supabase || !email) {
+      setStatus("❌ Please enter your email address first")
+      return
+    }
+    setStatus("Sending verification email...")
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
+      email: email,
+    })
+    if (error) {
+      setStatus(`❌ Error: ${error.message}`)
+    } else {
+      setStatus("✅ Verification email sent! Please check your inbox and spam folder.")
+      setShowResendOption(false)
+    }
   }
 
   if (!supabaseConfigured) {
@@ -184,6 +205,15 @@ function LoginBody() {
                     💡 Didn&apos;t receive it? Check your spam folder or try signing up again.
                   </p>
                 </div>
+              )}
+              {showResendOption && (
+                <button
+                  onClick={handleResendVerification}
+                  type="button"
+                  className="mt-2 text-xs underline underline-offset-2 hover:text-blue-600"
+                >
+                  Resend verification email
+                </button>
               )}
             </div>
           )}
