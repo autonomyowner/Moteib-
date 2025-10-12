@@ -21,6 +21,8 @@ export default function RoomsPage() {
   const [error, setError] = useState<string>("");
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [creating, setCreating] = useState(false);
+  const [sharing, setSharing] = useState<string | null>(null);
+  const [shareModal, setShareModal] = useState<{ room: Room; shareableLink: string } | null>(null);
   
   const [newRoom, setNewRoom] = useState({
     roomName: "",
@@ -123,6 +125,53 @@ export default function RoomsPage() {
 
   const handleJoinRoom = (roomName: string) => {
     router.push(`/call/${roomName}`);
+  };
+
+  const handleShareRoom = async (room: Room) => {
+    if (!supabase) return;
+    
+    setSharing(room.id);
+    setError("");
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        setError("Please log in to share rooms");
+        setSharing(null);
+        return;
+      }
+
+      const response = await fetch("/api/rooms/share", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ roomName: room.room_name }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to generate share link");
+      }
+
+      const { shareableLink } = await response.json();
+      setShareModal({ room, shareableLink });
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to share room");
+    } finally {
+      setSharing(null);
+    }
+  };
+
+  const handleCopyLink = async (link: string) => {
+    try {
+      await navigator.clipboard.writeText(link);
+      // You could add a toast notification here
+    } catch (err) {
+      console.error("Failed to copy link:", err);
+    }
   };
 
   if (loading) {
@@ -236,13 +285,35 @@ export default function RoomsPage() {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => handleJoinRoom(room.room_name)}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
-                  aria-label={`Join room ${room.title}`}
-                >
-                  Join Room
-                </button>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => handleJoinRoom(room.room_name)}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
+                    aria-label={`Join room ${room.title}`}
+                  >
+                    Join Room
+                  </button>
+                  <button
+                    onClick={() => handleShareRoom(room)}
+                    disabled={sharing === room.id}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold border border-black/15 bg-white/60 hover:bg-white/80 disabled:opacity-50"
+                    aria-label={`Share room ${room.title}`}
+                  >
+                    {sharing === room.id ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-slate-600 border-t-transparent rounded-full animate-spin"></div>
+                        Sharing...
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                        </svg>
+                        Share
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -334,6 +405,69 @@ export default function RoomsPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Share Modal */}
+      {shareModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="rounded-xl border border-black/10 bg-white/90 backdrop-blur p-8 max-w-md w-full text-slate-900">
+            <h2 className="text-2xl font-bold mb-6">Share Room</h2>
+            
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-semibold mb-2">{shareModal.room.title}</h3>
+                <p className="text-sm text-slate-600 font-mono">{shareModal.room.room_name}</p>
+              </div>
+
+              <div>
+                <label htmlFor="shareLink" className="block text-sm font-medium mb-2">
+                  Shareable Link
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    id="shareLink"
+                    type="text"
+                    value={shareModal.shareableLink}
+                    readOnly
+                    className="flex-1 rounded-md border border-black/20 bg-white/70 p-2 text-sm"
+                  />
+                  <button
+                    onClick={() => handleCopyLink(shareModal.shareableLink)}
+                    className="rounded-md border border-black/20 bg-white/70 px-3 py-2 text-sm hover:bg-white/90"
+                    aria-label="Copy link"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <p className="text-xs text-slate-600">
+                Anyone with this link can join your room. They&apos;ll need to be logged in to participate in voice calls.
+              </p>
+
+              <div className="flex gap-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setShareModal(null)}
+                  className="flex-1 rounded-md border border-black/20 bg-white/70 px-4 py-2 font-semibold hover:bg-white/90"
+                >
+                  Close
+                </button>
+                <button
+                  onClick={() => handleCopyLink(shareModal.shareableLink)}
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  Copy Link
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
