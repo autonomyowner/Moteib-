@@ -24,6 +24,7 @@ export default function Header() {
   }, [router])
 
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [maps, setMaps] = useState<Array<{ id: string; title: string; created_at: string }>>([])
 
   useEffect(() => {
@@ -45,17 +46,29 @@ export default function Header() {
 
   return (
     <div className="w-full rounded-none md:rounded-lg border-b md:border md:border-white/15 bg-white/5 backdrop-blur">
-      <div className="flex items-center gap-3 px-3 py-2">
+      <div className="flex items-center gap-2 px-3 py-2">
+        {/* Hamburger Menu Button (Mobile Only) */}
+        <button
+          onClick={() => setMobileMenuOpen((v) => !v)}
+          className="md:hidden flex flex-col gap-1 p-2 rounded hover:bg-white/10"
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span className="w-5 h-0.5 bg-white transition-transform" />
+          <span className="w-5 h-0.5 bg-white transition-transform" />
+          <span className="w-5 h-0.5 bg-white transition-transform" />
+        </button>
+
         {/* Left: Logo */}
-          <Link
-            href="/"
-            className="shrink-0 text-lg font-semibold select-none bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
-            aria-label="TRAVoices Home"
-          >
+        <Link
+          href="/"
+          className="shrink-0 text-base md:text-lg font-semibold select-none bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+          aria-label="TRAVoices Home"
+        >
           TRAVoices
         </Link>
 
-        {/* Center: Nav + Search */}
+        {/* Center: Nav + Search (Desktop) */}
         <div className="hidden md:flex items-center gap-2 ml-2">
           <Link href="/" className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Home</Link>
           <Link href="/pricing" className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Pricing</Link>
@@ -105,23 +118,129 @@ export default function Header() {
         <div className="ml-auto flex items-center gap-2">
           <button
             onClick={handleNewMap}
-            className="inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="inline-flex items-center gap-1 md:gap-2 rounded-md px-2 md:px-3 py-1.5 text-xs md:text-sm font-medium text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
               <path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6z"/>
             </svg>
-            Start Call
+            <span className="hidden sm:inline">Start Call</span>
+            <span className="sm:hidden">Call</span>
           </button>
           {authed ? (
-            <button onClick={() => supabase?.auth.signOut()} className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10">Logout</button>
+            <button onClick={() => supabase?.auth.signOut()} className="hidden sm:block rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10">Logout</button>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2">
               <Link href="/login" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Login</Link>
               <Link href="/signup" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Sign up</Link>
             </div>
           )}
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-white/15 bg-white/5 backdrop-blur">
+          <nav className="flex flex-col px-3 py-2 space-y-1" role="navigation" aria-label="Mobile navigation">
+            <Link 
+              href="/" 
+              className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              href="/pricing" 
+              className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Pricing
+            </Link>
+            <Link 
+              href="/vision" 
+              className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Vision
+            </Link>
+            <Link 
+              href="/rooms" 
+              className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Rooms
+            </Link>
+            
+            {/* Calls Section in Mobile */}
+            <div className="border-t border-white/10 pt-2 mt-2">
+              <div className="text-xs uppercase tracking-wide text-white/70 px-3 pb-1">Your Calls</div>
+              {maps.length > 0 ? (
+                <ul className="space-y-1 max-h-40 overflow-auto">
+                  {maps.map((m) => (
+                    <li key={m.id} className="flex items-center justify-between gap-2 rounded px-3 py-2 hover:bg-white/10">
+                      <Link href={`/maps/${m.id}`} className="truncate text-sm flex-1" onClick={() => setMobileMenuOpen(false)}>{m.title}</Link>
+                      <button
+                        onClick={async (e) => { e.preventDefault(); e.stopPropagation(); try { await deleteMap(m.id); setMaps((prev) => prev.filter((x) => x.id !== m.id)) } catch {} }}
+                        className="text-xs rounded border border-white/20 px-2 py-0.5 hover:bg-white/10"
+                        title="Delete call"
+                      >Clear</button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="px-3 py-2 text-sm text-white/60">No calls</div>
+              )}
+              {maps.length > 0 && (
+                <button onClick={handleClearAll} className="text-xs rounded border border-white/20 px-3 py-1 mt-2 ml-3 hover:bg-white/10">Clear all</button>
+              )}
+            </div>
+
+            {/* Search in Mobile */}
+            <div className="pt-2">
+              <label className="relative w-full" aria-label="Search">
+                <span className="pointer-events-none absolute inset-y-0 left-2 flex items-center text-white/60">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                  </svg>
+                </span>
+                <input
+                  className="w-full rounded-md border border-white/15 bg-white/5 pl-8 pr-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-white/25 placeholder:text-white/60"
+                  placeholder="Search calls…"
+                  aria-label="Search calls"
+                />
+              </label>
+            </div>
+
+            {/* Auth buttons in Mobile */}
+            <div className="border-t border-white/10 pt-2 mt-2 space-y-1">
+              {authed ? (
+                <button 
+                  onClick={() => { supabase?.auth.signOut(); setMobileMenuOpen(false); }} 
+                  className="w-full text-left px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10"
+                >
+                  Logout
+                </button>
+              ) : (
+                <>
+                  <Link 
+                    href="/login" 
+                    className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                  <Link 
+                    href="/signup" 
+                    className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Sign up
+                  </Link>
+                </>
+              )}
+            </div>
+          </nav>
+        </div>
+      )}
     </div>
   )
 }

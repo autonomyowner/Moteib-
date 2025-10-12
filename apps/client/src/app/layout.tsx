@@ -31,7 +31,7 @@ export default function RootLayout({
         <div className="sticky top-0 z-50">
           <Header />
         </div>
-        <div className="mx-auto max-w-5xl px-4 py-6 space-y-6">
+        <div className="mx-auto max-w-5xl px-3 sm:px-4 md:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
           {children}
         </div>
       </body>
