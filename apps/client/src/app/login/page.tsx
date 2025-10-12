@@ -40,9 +40,16 @@ function LoginBody() {
       password
     })
     if (error) {
-      setStatus(`Error: ${error.message}`)
+      // Provide more helpful error messages
+      if (error.message.includes("Invalid login credentials")) {
+        setStatus("❌ Invalid email or password. Please check your credentials and try again.")
+      } else if (error.message.includes("Email not confirmed")) {
+        setStatus("⚠️ Please verify your email address before logging in. Check your inbox for the confirmation link.")
+      } else {
+        setStatus(`Error: ${error.message}`)
+      }
     } else if (data.session) {
-      setStatus("Success! Redirecting...")
+      setStatus("✅ Success! Redirecting...")
       const redirect = params.get("redirect") || "/rooms"
       setTimeout(() => router.replace(redirect), 500)
     }
@@ -102,7 +109,7 @@ function LoginBody() {
         <div className="rounded-xl border border-black/10 bg-white/70 backdrop-blur p-6 text-slate-900">
           <form onSubmit={handleEmailLogin} className="space-y-3">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
               <input
                 id="email"
                 type="email"
@@ -114,7 +121,7 @@ function LoginBody() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
               <input
                 id="password"
                 type="password"
@@ -157,7 +164,29 @@ function LoginBody() {
             </button>
           </div>
 
-          {status && <p className="mt-3 text-sm text-slate-700" role="status">{status}</p>}
+          {status && (
+            <div className={`mt-4 p-3 rounded-lg ${
+              status.includes("✅") || status.includes("Success")
+                ? "bg-green-50 border border-green-200 text-green-800" 
+                : status.includes("❌") || status.includes("Invalid")
+                ? "bg-red-50 border border-red-200 text-red-800"
+                : status.includes("⚠️") || status.includes("verify")
+                ? "bg-yellow-50 border border-yellow-200 text-yellow-800"
+                : "bg-blue-50 border border-blue-200 text-blue-800"
+            }`}>
+              <p className="text-sm font-medium" role="status">{status}</p>
+              {status.includes("verify your email") && (
+                <div className="mt-2 space-y-1">
+                  <p className="text-xs">
+                    📧 You need to verify your email before logging in. Check your inbox for the confirmation link.
+                  </p>
+                  <p className="text-xs">
+                    💡 Didn't receive it? Check your spam folder or try signing up again.
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         <p className="text-center text-sm text-slate-800">

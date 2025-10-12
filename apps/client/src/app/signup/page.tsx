@@ -33,8 +33,28 @@ function SignupPageInner() {
     e.preventDefault()
     if (!supabase) return
     setStatus("Creating account…")
-    const { error } = await supabase.auth.signUp({ email, password })
-    setStatus(error ? `Error: ${error.message}` : "Check your email to confirm your account.")
+    
+    const { data, error } = await supabase.auth.signUp({ 
+      email, 
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback`
+      }
+    })
+    
+    if (error) {
+      setStatus(`Error: ${error.message}`)
+      return
+    }
+    
+    // Check if email confirmation is required
+    if (data.user && !data.session) {
+      setStatus("✅ Account created! Please check your email to verify your account before logging in.")
+    } else if (data.session) {
+      // Auto-login successful (email confirmation disabled)
+      setStatus("✅ Account created! Redirecting...")
+      setTimeout(() => router.replace("/rooms"), 1500)
+    }
   }
 
   if (!supabaseConfigured) {
@@ -105,18 +125,57 @@ function SignupPageInner() {
 
         <div className="rounded-xl border border-black/10 bg-white/70 backdrop-blur p-6 text-slate-900">
           <form onSubmit={handleSignup} className="space-y-3">
-            <label className="block text-sm font-medium" htmlFor="email">Email</label>
-            <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full rounded-md border border-black/20 bg-white/70 p-2 outline-none focus:ring-2 focus:ring-amber-400/50" required />
-            <label className="block text-sm font-medium" htmlFor="password">Password</label>
-            <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full rounded-md border border-black/20 bg-white/70 p-2 outline-none focus:ring-2 focus:ring-amber-400/50" required />
+            <div>
+              <label className="block text-sm font-medium mb-1" htmlFor="email">Email</label>
+              <input 
+                id="email" 
+                type="email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                placeholder="you@example.com"
+                className="w-full rounded-md border border-black/20 bg-white/70 p-2 outline-none focus:ring-2 focus:ring-amber-400/50" 
+                required 
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
+              <input 
+                id="password" 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                placeholder="At least 6 characters"
+                minLength={6}
+                className="w-full rounded-md border border-black/20 bg-white/70 p-2 outline-none focus:ring-2 focus:ring-amber-400/50" 
+                required 
+              />
+              <p className="mt-1 text-xs text-slate-600">Must be at least 6 characters</p>
+            </div>
             <button
+              type="submit"
               aria-label="Create account"
               className="w-full inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
             >
               Sign up
             </button>
           </form>
-          {status && <p className="mt-3 text-sm text-slate-700" role="status">{status}</p>}
+          
+          {status && (
+            <div className={`mt-4 p-3 rounded-lg ${
+              status.includes("✅") 
+                ? "bg-green-50 border border-green-200 text-green-800" 
+                : status.includes("❌") || status.includes("Error")
+                ? "bg-red-50 border border-red-200 text-red-800"
+                : "bg-blue-50 border border-blue-200 text-blue-800"
+            }`}>
+              <p className="text-sm font-medium" role="status">{status}</p>
+              {status.includes("check your email") && (
+                <p className="mt-2 text-xs">
+                  📧 Check your inbox and click the verification link to complete your registration.
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         <p className="text-center text-sm text-slate-800">
