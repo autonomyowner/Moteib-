@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import ConditionalGlobalBoard from "../components/ConditionalGlobalBoard";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -33,6 +34,7 @@ export default function RootLayout({
         </div>
         <div className="mx-auto max-w-5xl px-3 sm:px-4 md:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
           {children}
+          <Footer />
         </div>
       </body>
     </html>
