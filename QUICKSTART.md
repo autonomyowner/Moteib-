@@ -139,7 +139,7 @@ Check these files for detailed information:
 
 ## You're All Set! 🎉
 
-Your NeuroCanvas app is now configured with:
+Your TRAVoices app is now configured with:
 - ✅ Full authentication system
 - ✅ Room management
 - ✅ Voice chat capabilities

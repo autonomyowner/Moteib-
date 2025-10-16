@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { supabase, supabaseConfigured } from "../../lib/supabase"
-import { generateMap, saveMap } from "../../lib/api"
 
 export default function OnboardingPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
-  const [seed, setSeed] = useState("Plan a weekend trip to the mountains with friends. Consider packing list, travel, budget, and activities.")
   const [status, setStatus] = useState("")
   const [error, setError] = useState("")
 
@@ -39,15 +37,11 @@ export default function OnboardingPage() {
   const handleComplete = async () => {
     try {
       setError("")
-      setStatus("Creating voice room…")
-      const { map } = await generateMap(seed)
-      setStatus("Saving room…")
-      await saveMap({ title: "My first voice room", graph: map })
-      setStatus("Finalizing…")
+      setStatus("Completing onboarding…")
       const { data: sessionData } = await supabase!.auth.getSession()
       const userId = sessionData.session!.user.id
       await supabase!.from("users").update({ onboarded: true }).eq("id", userId)
-      router.replace("/")
+      router.replace("/rooms")
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : "Onboarding failed")
       setStatus("")
@@ -60,17 +54,23 @@ export default function OnboardingPage() {
   return (
     <div className="max-w-xl mx-auto p-6 space-y-4">
       <h1 className="text-xl font-semibold">Welcome to TRAVoices</h1>
-      <p className="text-sm opacity-70">Start by creating your first voice room. You can edit this text.</p>
-      <label htmlFor="seed" className="block text-sm font-medium">Seed text</label>
-      <textarea
-        id="seed"
-        value={seed}
-        onChange={(e) => setSeed(e.target.value)}
-        rows={5}
-        className="w-full rounded-md border border-black/10 dark:border-white/15 bg-transparent p-3"
-      />
+      <p className="text-sm opacity-70">Your AI-powered real-time voice translation platform. Break language barriers and connect with anyone, anywhere.</p>
+      <div className="space-y-3 py-4">
+        <div className="p-4 rounded-lg border border-black/10 dark:border-white/15 bg-white/5">
+          <h2 className="font-medium text-sm">🎙 Voice Translation</h2>
+          <p className="text-xs opacity-70 mt-1">Speak naturally and be understood in any language</p>
+        </div>
+        <div className="p-4 rounded-lg border border-black/10 dark:border-white/15 bg-white/5">
+          <h2 className="font-medium text-sm">🔊 Real-Time Rooms</h2>
+          <p className="text-xs opacity-70 mt-1">Create and join voice rooms for seamless collaboration</p>
+        </div>
+        <div className="p-4 rounded-lg border border-black/10 dark:border-white/15 bg-white/5">
+          <h2 className="font-medium text-sm">🧠 Voice Cloning</h2>
+          <p className="text-xs opacity-70 mt-1">Preserve your unique voice and speaking style</p>
+        </div>
+      </div>
       <div className="flex items-center gap-3">
-        <button onClick={handleComplete} className="rounded-md bg-black text-white px-4 py-2 text-sm dark:bg-white dark:text-black">Create my first voice room</button>
+        <button onClick={handleComplete} className="rounded-md bg-black text-white px-4 py-2 text-sm dark:bg-white dark:text-black hover:opacity-90">Get Started</button>
         {status && <span className="text-sm opacity-70">{status}</span>}
         {error && <span className="text-sm text-red-600">{error}</span>}
       </div>

@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { useEffect, useState, useCallback } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { supabase } from '../lib/supabase'
 import { deleteMap, listMaps } from '../lib/api'
 
 export default function Header() {
   const router = useRouter()
+  const pathname = usePathname()
   const [authed, setAuthed] = useState(false)
   useEffect(() => {
     const mounted = true
@@ -70,15 +71,22 @@ export default function Header() {
 
         {/* Center: Nav + Search (Desktop) */}
         <div className="hidden md:flex items-center gap-2 ml-2">
-          <Link href="/" className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Home</Link>
-          <Link href="/pricing" className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Pricing</Link>
-          <Link href="/vision" className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Vision</Link>
-          <Link href="/rooms" className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Rooms</Link>
+          <Link href={pathname?.startsWith('/ar') ? '/ar' : '/'} className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+            {pathname?.startsWith('/ar') ? 'الرئيسية' : 'Home'}
+          </Link>
+          <Link href={pathname?.startsWith('/ar') ? '/ar/vision' : '/vision'} className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+            {pathname?.startsWith('/ar') ? 'الرؤية' : 'Vision'}
+          </Link>
+          <Link href={pathname?.startsWith('/ar') ? '/ar/rooms' : '/rooms'} className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+            {pathname?.startsWith('/ar') ? 'الغرف' : 'Rooms'}
+          </Link>
           <div className="relative">
-            <button onClick={() => setMenuOpen((v) => !v)} className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Calls</button>
+            <button onClick={() => setMenuOpen((v) => !v)} className="px-2 py-1 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+              {pathname?.startsWith('/ar') ? 'المكالمات' : 'Calls'}
+            </button>
             {menuOpen ? (
               <div className="absolute left-0 mt-2 w-64 rounded-md border border-white/15 bg-black/70 backdrop-blur shadow-xl p-2 z-50">
-                <div className="text-xs uppercase tracking-wide text-white/70 px-1 pb-1">Your calls</div>
+                <div className="text-xs uppercase tracking-wide text-white/70 px-1 pb-1">{pathname?.startsWith('/ar') ? 'مكالماتك' : 'Your calls'}</div>
                 <ul className="max-h-60 overflow-auto space-y-1">
                   {maps.map((m) => (
                     <li key={m.id} className="flex items-center justify-between gap-2 rounded px-2 py-1 hover:bg-white/10">
@@ -86,14 +94,18 @@ export default function Header() {
                       <button
                         onClick={async (e) => { e.preventDefault(); e.stopPropagation(); try { await deleteMap(m.id); setMaps((prev) => prev.filter((x) => x.id !== m.id)) } catch {} }}
                         className="text-xs rounded border border-white/20 px-2 py-0.5 hover:bg-white/10"
-                        title="Delete call"
-                      >Clear</button>
+                        title={pathname?.startsWith('/ar') ? 'حذف المكالمة' : 'Delete call'}
+                      >
+                        {pathname?.startsWith('/ar') ? 'مسح' : 'Clear'}
+                      </button>
                     </li>
                   ))}
-                  {maps.length === 0 && <li className="px-2 py-1 text-sm text-white/60">No calls</li>}
+                  {maps.length === 0 && <li className="px-2 py-1 text-sm text-white/60">{pathname?.startsWith('/ar') ? 'لا توجد مكالمات' : 'No calls'}</li>}
                 </ul>
                 <div className="mt-2 flex justify-end">
-                  <button onClick={handleClearAll} disabled={!maps.length} className="text-xs rounded border border-white/20 px-2 py-1 hover:bg-white/10 disabled:opacity-50">Clear all</button>
+                  <button onClick={handleClearAll} disabled={!maps.length} className="text-xs rounded border border-white/20 px-2 py-1 hover:bg-white/10 disabled:opacity-50">
+                    {pathname?.startsWith('/ar') ? 'مسح الكل' : 'Clear all'}
+                  </button>
                 </div>
               </div>
             ) : null}
@@ -108,14 +120,27 @@ export default function Header() {
             </span>
             <input
               className="w-full rounded-md border border-white/15 bg-white/5 pl-8 pr-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-white/25 placeholder:text-white/60"
-              placeholder="Search calls…"
-              aria-label="Search calls"
+              placeholder={pathname?.startsWith('/ar') ? 'بحث في المكالمات...' : 'Search calls…'}
+              aria-label={pathname?.startsWith('/ar') ? 'بحث في المكالمات' : 'Search calls'}
             />
           </label>
         </div>
 
         {/* Right: Actions */}
         <div className="ml-auto flex items-center gap-2">
+          {/* Language Switcher */}
+          <Link
+            href={pathname?.startsWith('/ar') ? pathname.replace('/ar', '') || '/' : `/ar${pathname === '/' ? '' : pathname}`}
+            className="inline-flex items-center gap-1 rounded-md px-2 md:px-3 py-1.5 text-xs md:text-sm font-medium border border-white/15 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+            aria-label="Switch language"
+            title={pathname?.startsWith('/ar') ? 'Switch to English' : 'Switch to Arabic'}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+            </svg>
+            <span className="hidden md:inline">{pathname?.startsWith('/ar') ? 'EN' : 'ع'}</span>
+          </Link>
+          
           <button
             onClick={handleNewMap}
             className="inline-flex items-center gap-1 md:gap-2 rounded-md px-2 md:px-3 py-1.5 text-xs md:text-sm font-medium text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
@@ -123,18 +148,26 @@ export default function Header() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
               <path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6z"/>
             </svg>
-            <span className="hidden sm:inline">Start Call</span>
-            <span className="sm:hidden">Call</span>
+            <span className="hidden sm:inline">{pathname?.startsWith('/ar') ? 'بدء مكالمة' : 'Start Call'}</span>
+            <span className="sm:hidden">{pathname?.startsWith('/ar') ? 'مكالمة' : 'Call'}</span>
           </button>
           {authed ? (
             <div className="hidden sm:flex items-center gap-2">
-              <Link href="/profile" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Profile</Link>
-              <button onClick={() => supabase?.auth.signOut()} className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10">Logout</button>
+              <Link href="/profile" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+                {pathname?.startsWith('/ar') ? 'الملف الشخصي' : 'Profile'}
+              </Link>
+              <button onClick={() => supabase?.auth.signOut()} className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10">
+                {pathname?.startsWith('/ar') ? 'تسجيل الخروج' : 'Logout'}
+              </button>
             </div>
           ) : (
             <div className="hidden sm:flex items-center gap-2">
-              <Link href="/login" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Login</Link>
-              <Link href="/signup" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">Sign up</Link>
+              <Link href="/login" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+                {pathname?.startsWith('/ar') ? 'تسجيل الدخول' : 'Login'}
+              </Link>
+              <Link href="/signup" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+                {pathname?.startsWith('/ar') ? 'إنشاء حساب' : 'Sign up'}
+              </Link>
             </div>
           )}
         </div>
@@ -145,37 +178,32 @@ export default function Header() {
         <div className="md:hidden border-t border-white/15 bg-white/5 backdrop-blur">
           <nav className="flex flex-col px-3 py-2 space-y-1" role="navigation" aria-label="Mobile navigation">
             <Link 
-              href="/" 
+              href={pathname?.startsWith('/ar') ? '/ar' : '/'} 
               className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Home
+              {pathname?.startsWith('/ar') ? 'الرئيسية' : 'Home'}
             </Link>
             <Link 
-              href="/pricing" 
+              href={pathname?.startsWith('/ar') ? '/ar/vision' : '/vision'} 
               className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Pricing
+              {pathname?.startsWith('/ar') ? 'الرؤية' : 'Vision'}
             </Link>
             <Link 
-              href="/vision" 
+              href={pathname?.startsWith('/ar') ? '/ar/rooms' : '/rooms'} 
               className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Vision
-            </Link>
-            <Link 
-              href="/rooms" 
-              className="px-3 py-2 text-sm rounded hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Rooms
+              {pathname?.startsWith('/ar') ? 'الغرف' : 'Rooms'}
             </Link>
             
             {/* Calls Section in Mobile */}
             <div className="border-t border-white/10 pt-2 mt-2">
-              <div className="text-xs uppercase tracking-wide text-white/70 px-3 pb-1">Your Calls</div>
+              <div className="text-xs uppercase tracking-wide text-white/70 px-3 pb-1">
+                {pathname?.startsWith('/ar') ? 'مكالماتك' : 'Your Calls'}
+              </div>
               {maps.length > 0 ? (
                 <ul className="space-y-1 max-h-40 overflow-auto">
                   {maps.map((m) => (
@@ -184,22 +212,28 @@ export default function Header() {
                       <button
                         onClick={async (e) => { e.preventDefault(); e.stopPropagation(); try { await deleteMap(m.id); setMaps((prev) => prev.filter((x) => x.id !== m.id)) } catch {} }}
                         className="text-xs rounded border border-white/20 px-2 py-0.5 hover:bg-white/10"
-                        title="Delete call"
-                      >Clear</button>
+                        title={pathname?.startsWith('/ar') ? 'حذف المكالمة' : 'Delete call'}
+                      >
+                        {pathname?.startsWith('/ar') ? 'مسح' : 'Clear'}
+                      </button>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <div className="px-3 py-2 text-sm text-white/60">No calls</div>
+                <div className="px-3 py-2 text-sm text-white/60">
+                  {pathname?.startsWith('/ar') ? 'لا توجد مكالمات' : 'No calls'}
+                </div>
               )}
               {maps.length > 0 && (
-                <button onClick={handleClearAll} className="text-xs rounded border border-white/20 px-3 py-1 mt-2 ml-3 hover:bg-white/10">Clear all</button>
+                <button onClick={handleClearAll} className="text-xs rounded border border-white/20 px-3 py-1 mt-2 ml-3 hover:bg-white/10">
+                  {pathname?.startsWith('/ar') ? 'مسح الكل' : 'Clear all'}
+                </button>
               )}
             </div>
 
             {/* Search in Mobile */}
             <div className="pt-2">
-              <label className="relative w-full" aria-label="Search">
+              <label className="relative w-full" aria-label={pathname?.startsWith('/ar') ? 'بحث' : 'Search'}>
                 <span className="pointer-events-none absolute inset-y-0 left-2 flex items-center text-white/60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                     <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
@@ -207,10 +241,25 @@ export default function Header() {
                 </span>
                 <input
                   className="w-full rounded-md border border-white/15 bg-white/5 pl-8 pr-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-white/25 placeholder:text-white/60"
-                  placeholder="Search calls…"
-                  aria-label="Search calls"
+                  placeholder={pathname?.startsWith('/ar') ? 'بحث في المكالمات...' : 'Search calls…'}
+                  aria-label={pathname?.startsWith('/ar') ? 'بحث في المكالمات' : 'Search calls'}
                 />
               </label>
+            </div>
+
+            {/* Language Switcher in Mobile */}
+            <div className="border-t border-white/10 pt-2 mt-2">
+              <Link
+                href={pathname?.startsWith('/ar') ? pathname.replace('/ar', '') || '/' : `/ar${pathname === '/' ? '' : pathname}`}
+                className="flex items-center justify-center gap-2 w-full px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Switch language"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+                </svg>
+                {pathname?.startsWith('/ar') ? 'Switch to English' : 'التبديل إلى العربية'}
+              </Link>
             </div>
 
             {/* Auth buttons in Mobile */}
@@ -222,13 +271,13 @@ export default function Header() {
                     className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    My Profile
+                    {pathname?.startsWith('/ar') ? 'ملفي الشخصي' : 'My Profile'}
                   </Link>
                   <button 
                     onClick={() => { supabase?.auth.signOut(); setMobileMenuOpen(false); }} 
                     className="w-full text-left px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10"
                   >
-                    Logout
+                    {pathname?.startsWith('/ar') ? 'تسجيل الخروج' : 'Logout'}
                   </button>
                 </>
               ) : (
@@ -238,14 +287,14 @@ export default function Header() {
                     className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Login
+                    {pathname?.startsWith('/ar') ? 'تسجيل الدخول' : 'Login'}
                   </Link>
                   <Link 
                     href="/signup" 
                     className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Sign up
+                    {pathname?.startsWith('/ar') ? 'إنشاء حساب' : 'Sign up'}
                   </Link>
                 </>
               )}

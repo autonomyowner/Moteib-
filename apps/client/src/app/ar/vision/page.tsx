@@ -2,14 +2,33 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Tajawal } from "next/font/google";
 
-export default function VisionPage() {
+const tajawal = Tajawal({
+  weight: ['400', '500', '700'],
+  subsets: ["arabic"],
+  display: 'swap',
+});
+
+export default function ArabicVisionPage() {
   const [displayedTitle, setDisplayedTitle] = useState('');
   const [displayedDesc, setDisplayedDesc] = useState('');
   const [titleComplete, setTitleComplete] = useState(false);
   
-  const fullTitle = 'Building the voice layer for the AI age';
-  const fullDesc = "TRAVoices turns human speech into universal communication. We blend real-time translation, contextual understanding, and voice cloning into one seamless system. This isn't another translation app — it's the foundation of global dialogue.";
+  const fullTitle = 'نبني طبقة الصوت لعصر الذكاء الاصطناعي';
+  const fullDesc = 'تحوِّل TRAVoices الكلام البشري إلى تواصل عالمي موحّد. نمزج بين الترجمة الفورية، والفهم السياقي، واستنساخ الصوت في نظام واحد متكامل وسلس. ليست مجرد تطبيق ترجمة آخر — بل هي الأساس لحوار عالمي بلا حدود.';
+
+  useEffect(() => {
+    // Set RTL direction on html element
+    document.documentElement.setAttribute('dir', 'rtl');
+    document.documentElement.setAttribute('lang', 'ar');
+    
+    return () => {
+      // Reset to LTR when leaving
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.documentElement.setAttribute('lang', 'en');
+    };
+  }, []);
 
   useEffect(() => {
     // Typewriter effect for title
@@ -45,7 +64,7 @@ export default function VisionPage() {
   }, [titleComplete]);
 
   return (
-    <div className="relative">
+    <div className={`relative ${tajawal.className}`}>
       {/* Background motif to match pricing page */}
       <div
         aria-hidden
@@ -72,44 +91,47 @@ export default function VisionPage() {
 
         <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
           <div className="rounded-xl border border-black/10 bg-white/70 backdrop-blur p-4 sm:p-5">
-            <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Why now</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-900">لماذا الآن</h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-800">
-              Voice is the new interface — but language still divides us.
-              AI models can understand meaning beyond words; yet communication tools remain outdated.
-              The world needs native multilingual infrastructure — where speech flows naturally across borders, accents, and cultures.
+              الصوت هو واجهة التواصل الجديدة — لكن اللغة لا تزال تفصل بيننا.
+              نماذج الذكاء الاصطناعي اليوم قادرة على فهم المعنى أبعد من الكلمات،
+              ومع ذلك، ما تزال أدوات التواصل تقليدية ومجزأة.
+              العالم بحاجة إلى بنية تحتية متعددة اللغات —
+              حيث يتدفّق الكلام بسلاسة عبر الحدود واللهجات والثقافات.
             </p>
           </div>
           <div className="rounded-xl border border-black/10 bg-white/70 backdrop-blur p-4 sm:p-5">
-            <h2 className="text-lg sm:text-xl font-semibold text-slate-900">What we ship</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-900">ما الذي نقدّمه</h2>
             <ul className="mt-2 space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-slate-800 list-disc list-inside">
-              <li>🎙 Live translation with emotional accuracy</li>
-              <li>🧠 Context reasoning engine for idioms, tone, and semantics</li>
-              <li>🗣 Voice cloning that mirrors identity and expression</li>
-              <li>🌍 Universal real-time communication layer for calls, meetings, and APIs</li>
-              <li>📡 Adaptive latency tech ensuring &lt;300ms translations</li>
+              <li>🎙 ترجمة فورية بدقة عاطفية عالية</li>
+              <li>🧠 محرك فهم سياقي يتعامل مع العبارات الاصطلاحية والنبرة والمعاني الضمنية</li>
+              <li>🗣 استنساخ صوتي يعكس هوية المتحدث وتعبيره الشخصي</li>
+              <li>🌍 طبقة تواصل عالمية فورية للمكالمات، والاجتماعات، وواجهات البرمجة (APIs)</li>
+              <li>📡 تقنية تأخير تكيفي تضمن ترجمة أسرع من ‎300‎ ملّي ثانية</li>
             </ul>
           </div>
           <div className="rounded-xl border border-black/10 bg-white/70 backdrop-blur p-4 sm:p-5">
-            <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Where it goes</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-900">إلى أين نتجه</h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-800">
-              From person-to-person calls to enterprise communication layers, TRAVoices is building the operating system for human conversation.
-              The endgame: synchronous understanding — no captions, no lag, just voice.
+              من المكالمات بين الأفراد إلى بنى الاتصالات المؤسسية —
+              تُنشئ TRAVoices نظام التشغيل للمحادثات البشرية.
+              الهدف النهائي: فهم متزامن — بلا ترجمة مكتوبة، بلا تأخير، فقط صوت.
             </p>
           </div>
         </div>
 
         <section className="mt-8 sm:mt-10 rounded-2xl border border-black/10 bg-white/70 backdrop-blur p-4 sm:p-6">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900">The investor offer</h3>
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900">عرض للمستثمرين</h3>
           <p className="mt-2 sm:mt-3 text-sm sm:text-base text-slate-800">
-            We&apos;re opening a limited round for partners who see voice as the next protocol layer of the internet.
+            نفتح جولة محدودة للشركاء الذين يرون في الصوت الطبقة التالية لبروتوكولات الإنترنت.
           </p>
           <p className="mt-2 text-sm sm:text-base text-slate-800">
-            Funds accelerate:
+            تمويلنا يسرّع تطوير:
           </p>
-          <ul className="mt-2 ml-4 sm:ml-6 space-y-1 text-xs sm:text-sm text-slate-800 list-disc">
-            <li>AI speech infrastructure & model fine-tuning</li>
-            <li>Global voice data partnerships</li>
-            <li>Go-to-market across enterprises, telecoms, and creators</li>
+          <ul className="mt-2 mr-4 sm:mr-6 space-y-1 text-xs sm:text-sm text-slate-800 list-disc">
+            <li>بنية تحتية للذكاء الصوتي وتخصيص النماذج اللغوية</li>
+            <li>شراكات بيانات صوتية عالمية</li>
+            <li>استراتيجية التوسع عبر الشركات، والاتصالات، وصنّاع المحتوى</li>
           </ul>
 
           <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
@@ -117,23 +139,22 @@ export default function VisionPage() {
               href="/signup"
               className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm sm:text-base text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 font-semibold shadow hover:brightness-105"
             >
-              Get early access
+              احصل على وصول مبكر
             </Link>
             <a
-              href="mailto:founders@travoices.ai?subject=TRAVoices%20—%20Investor%20Intro"
+              href="mailto:founders@travoices.ai?subject=TRAVoices%20—%20عرض%20استثماري"
               className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm sm:text-base border border-black/10 hover:bg-black/5 text-slate-900"
             >
-              🎧 Investor Intro
+              🎧 تعرّف على فرص الاستثمار
             </a>
           </div>
         </section>
 
         <footer className="mt-8 sm:mt-10 pb-2 text-xs sm:text-sm text-slate-700 px-2">
-          Built for those who believe in a world without language barriers. Let&apos;s upgrade human connection.
+          صُمّمت TRAVoices لأولئك الذين يؤمنون بعالمٍ بلا حواجز لغوية. لنرتقِ معًا بمستوى التواصل الإنساني.
         </footer>
       </section>
     </div>
   );
 }
-
 
