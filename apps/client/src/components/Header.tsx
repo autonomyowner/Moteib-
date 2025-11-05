@@ -12,7 +12,6 @@ export default function Header() {
     router.push('/')
   }, [router])
 
-  const [menuOpen, setMenuOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
