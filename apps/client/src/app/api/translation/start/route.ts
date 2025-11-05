@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as crypto from "crypto";
-import { RoomServiceClient, AgentDispatchClient } from "livekit-server-sdk";
+import { AgentDispatchClient } from "livekit-server-sdk";
 
 // IMPORTANT: You must set LIVEKIT_URL in your server-side environment variables
 // This is the URL to your LiveKit server, e.g., "https://my-livekit-server.com"
@@ -55,6 +55,9 @@ async function makeLiveKitRequest(
 }
 
 // Helper function to check if an agent is already in the room
+// Currently not used - commented out to prevent duplicate dispatch blocking
+// TODO: Re-enable with better detection logic after verifying agent joins work
+/*
 async function checkRoomForAgent(roomName: string): Promise<boolean> {
   try {
     const roomInfo = await makeLiveKitRequest(
@@ -94,6 +97,7 @@ async function checkRoomForAgent(roomName: string): Promise<boolean> {
     return false;
   }
 }
+*/
 
 // Helper function to extract dispatch ID from various response formats
 function extractDispatchId(response: unknown): string {
@@ -182,7 +186,11 @@ export async function POST(req: NextRequest) {
         
         console.log(`[Agent Dispatch] SDK dispatch successful:`, JSON.stringify(dispatch, null, 2));
         
-        const dispatchId = dispatch.jobId || dispatch.id || fallbackDispatchId;
+        // Extract dispatch ID - AgentDispatch may have different property names
+        const dispatchId = (dispatch as Record<string, unknown>).jobId 
+          || (dispatch as Record<string, unknown>).id 
+          || (dispatch as Record<string, unknown>).job_id
+          || fallbackDispatchId;
         
         console.log(`[Agent Dispatch] Agent dispatched successfully with ID: ${dispatchId}`);
         console.log(`[Agent Dispatch] Agent worker should now receive the job and join room ${roomName}`);
