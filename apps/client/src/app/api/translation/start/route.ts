@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
+import * as crypto from "crypto";
 
 // IMPORTANT: You must set LIVEKIT_URL in your server-side environment variables
 // This is the URL to your LiveKit server, e.g., "https://my-livekit-server.com"
