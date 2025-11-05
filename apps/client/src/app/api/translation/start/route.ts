@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as crypto from "crypto";
+import { RoomServiceClient, AgentDispatchClient } from "livekit-server-sdk";
 
 // IMPORTANT: You must set LIVEKIT_URL in your server-side environment variables
 // This is the URL to your LiveKit server, e.g., "https://my-livekit-server.com"
@@ -162,10 +163,45 @@ export async function POST(req: NextRequest) {
     // Generate a fallback dispatch ID in case the API doesn't return one
     const fallbackDispatchId = `dispatch-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
 
-    // Dispatch agent job using LiveKit's Agents API
-    // The endpoint format is: /twirp/livekit.AgentService/StartAgentJob
+    // Dispatch agent job using LiveKit SDK AgentDispatchClient
     try {
       console.log(`[Agent Dispatch] Attempting to dispatch agent to room ${roomName} with agent_name: interpreter-agent`);
+      
+      // Try using LiveKit SDK AgentDispatchClient first
+      try {
+        const dispatchClient = new AgentDispatchClient(
+          livekitUrl.replace(/\/$/, ""),
+          apiKey,
+          apiSecret
+        );
+        
+        console.log(`[Agent Dispatch] Using AgentDispatchClient from SDK`);
+        const dispatch = await dispatchClient.createDispatch(roomName, "interpreter-agent", {
+          metadata: metadata,
+        });
+        
+        console.log(`[Agent Dispatch] SDK dispatch successful:`, JSON.stringify(dispatch, null, 2));
+        
+        const dispatchId = dispatch.jobId || dispatch.id || fallbackDispatchId;
+        
+        console.log(`[Agent Dispatch] Agent dispatched successfully with ID: ${dispatchId}`);
+        console.log(`[Agent Dispatch] Agent worker should now receive the job and join room ${roomName}`);
+
+        return NextResponse.json(
+          {
+            message: 'Agent dispatched successfully',
+            dispatchId: dispatchId,
+            roomName: roomName,
+          },
+          { status: 200 }
+        );
+      } catch (sdkError) {
+        console.warn(`[Agent Dispatch] SDK method failed, trying HTTP API:`, sdkError instanceof Error ? sdkError.message : String(sdkError));
+        // Fall through to HTTP API method
+      }
+      
+      // Fallback to HTTP API if SDK doesn't work
+      console.log(`[Agent Dispatch] Using HTTP API method`);
       console.log(`[Agent Dispatch] Request payload:`, JSON.stringify({
         room: roomName,
         agent_name: "interpreter-agent",
@@ -203,27 +239,22 @@ export async function POST(req: NextRequest) {
       // Log the full error for debugging
       const errorMessage = apiError instanceof Error ? apiError.message : String(apiError);
       const errorStack = apiError instanceof Error ? apiError.stack : undefined;
-      console.error(`[Agent Dispatch] LiveKit AgentService API error:`, errorMessage);
+      console.error(`[Agent Dispatch] Agent dispatch failed:`, errorMessage);
       if (errorStack) {
         console.error(`[Agent Dispatch] Error stack:`, errorStack);
       }
       
-      // If the API endpoint fails, we still return success but log the error
-      // The agent worker might be listening for jobs via other means
-      console.log(`[Agent Dispatch] API call failed, but agent worker may still receive job via other mechanism`);
-      console.log(`[Agent Dispatch] Using fallback dispatch ID: ${fallbackDispatchId}`);
-      
+      // Return error instead of success
       return NextResponse.json(
         {
-          message: 'Agent dispatch initiated (fallback mode)',
+          error: `Failed to dispatch agent: ${errorMessage}`,
           dispatchId: fallbackDispatchId,
           roomName: roomName,
           agentName: 'interpreter-agent',
           metadata: metadata,
-          warning: 'LiveKit API call failed, but agent worker may still connect',
-          note: 'Check agent worker logs on Render to verify job reception',
+          note: 'Check Vercel function logs for detailed error information',
         },
-        { status: 200 }
+        { status: 500 }
       );
     }
   } catch (error) {
