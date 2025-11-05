@@ -22,14 +22,22 @@ export default function VoiceRoom({
     fetch(
       `/api/livekit/token?room=${encodeURIComponent(room)}&name=${encodeURIComponent(displayName)}&identity=${identity}`
     )
-      .then(r => {
-        if (!r.ok) throw new Error('Failed to get token');
+      .then(async r => {
+        if (!r.ok) {
+          const errorData = await r.json().catch(() => ({ error: 'Unknown error' }));
+          throw new Error(errorData.error || `Failed to get token (${r.status})`);
+        }
         return r.json();
       })
-      .then(d => setToken(d.token))
+      .then(d => {
+        if (!d.token) {
+          throw new Error('No token in response');
+        }
+        setToken(d.token);
+      })
       .catch(err => {
         console.error('Token fetch error:', err);
-        setError('Failed to connect to voice room');
+        setError(err instanceof Error ? err.message : 'Failed to connect to voice room');
       });
   }, [room, displayName]);
 

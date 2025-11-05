@@ -40,7 +40,7 @@ export default function LandingPage() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link
-            href="/signup"
+            href="/rooms"
             className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-semibold text-slate-900 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30 relative overflow-hidden bg-gradient-to-r from-yellow-400 to-amber-500 transition-all duration-1000 delay-900 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             }`}
@@ -53,18 +53,18 @@ export default function LandingPage() {
             <span className="relative z-10">Start Talking</span>
           </Link>
           <Link
-            href="/signup"
+            href="/rooms"
             className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-semibold border border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 relative overflow-hidden transition-all duration-1000 delay-1000 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}
-            aria-label="Create an account"
+            aria-label="Create a room"
             style={{
               background: 'linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.05) 100%)',
               backgroundSize: '200% 100%',
               animation: isVisible ? 'balayageLTR 3s ease-in-out infinite' : 'none'
             }}
           >
-            <span className="relative z-10">Create Account</span>
+            <span className="relative z-10">Create Room</span>
           </Link>
         </div>
         <style jsx>{`
@@ -166,18 +166,18 @@ export default function LandingPage() {
         <p className="text-sm sm:text-base text-slate-700">Experience a new era of voice communication. Start your first live translation in seconds.</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
-            href="/signup"
+            href="/rooms"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-semibold text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30"
             aria-label="Try TRAVoices Now"
           >
             Try TRAVoices Now
           </Link>
           <Link
-            href="/login"
+            href="/rooms"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-semibold border border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
-            aria-label="Login"
+            aria-label="Create Room"
           >
-            Login
+            Create Room
           </Link>
         </div>
       </section>

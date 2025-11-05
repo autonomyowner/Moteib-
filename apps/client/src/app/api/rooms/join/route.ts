@@ -1,21 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
 export const revalidate = 0;
 
 export async function GET(req: NextRequest) {
   try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if (!supabaseUrl || !supabaseAnonKey) {
-      return NextResponse.json(
-        { error: "Supabase not configured" },
-        { status: 500 }
-      );
-    }
-
     const url = new URL(req.url);
     const roomName = url.searchParams.get("roomName");
 
@@ -26,46 +15,25 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
-    // Check if room exists and is active (use .maybeSingle() instead of .single())
-    const { data: rooms, error: roomError } = await supabase
-      .from("rooms")
-      .select("*")
-      .eq("room_name", roomName)
-      .eq("is_active", true);
-
-    console.log("Join room debug:", { roomName, rooms, roomError });
-
-    if (roomError) {
-      console.error("Room query error:", roomError);
+    // Validate room name format (alphanumeric, hyphens, underscores only)
+    const roomNameRegex = /^[a-zA-Z0-9_-]+$/;
+    if (!roomNameRegex.test(roomName)) {
       return NextResponse.json(
-        { error: `Room not found: ${roomError.message}` },
-        { status: 404 }
+        { error: "Invalid room name format" },
+        { status: 400 }
       );
     }
 
-    if (!rooms || rooms.length === 0) {
-      console.log("No room found for name:", roomName);
-      return NextResponse.json(
-        { error: "Room not found or is no longer active" },
-        { status: 404 }
-      );
-    }
-
-    const room = rooms[0]; // Take the first (and should be only) room
-
+    // Return success for valid room names (ephemeral rooms, no existence check)
     return NextResponse.json({ 
       room: {
-        id: room.id,
-        room_name: room.room_name,
-        title: room.title,
-        description: room.description,
-        max_participants: room.max_participants,
-        created_at: room.created_at
+        room_name: roomName,
+        title: "Voice Room",
+        description: "",
+        max_participants: 10,
+        created_at: new Date().toISOString()
       }
     }, { status: 200 });
-
   } catch (error) {
     console.error("Error joining room:", error);
     return NextResponse.json(

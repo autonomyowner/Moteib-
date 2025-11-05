@@ -1,23 +1,12 @@
 "use client"
 
 import Link from 'next/link'
-import { useEffect, useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { supabase } from '../lib/supabase'
 
 export default function Header() {
   const router = useRouter()
   const pathname = usePathname()
-  const [authed, setAuthed] = useState(false)
-  useEffect(() => {
-    const mounted = true
-    supabase?.auth.getSession().then(({ data }) => {
-      if (!mounted) return
-      setAuthed(Boolean(data.session))
-    })
-    const { data: sub } = supabase?.auth.onAuthStateChange((_e, session) => setAuthed(Boolean(session))) ?? { data: { subscription: { unsubscribe() {} } } }
-    return () => { sub?.subscription?.unsubscribe?.() }
-  }, [])
 
   const handleNewMap = useCallback(() => {
     router.push('/')
@@ -25,8 +14,6 @@ export default function Header() {
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-
 
   return (
     <div className="w-full rounded-none md:rounded-lg border-b md:border md:border-white/15 bg-white/5 backdrop-blur">
@@ -105,25 +92,6 @@ export default function Header() {
             <span className="hidden sm:inline">{pathname?.startsWith('/ar') ? 'بدء مكالمة' : 'Start Call'}</span>
             <span className="sm:hidden">{pathname?.startsWith('/ar') ? 'مكالمة' : 'Call'}</span>
           </button>
-          {authed ? (
-            <div className="hidden sm:flex items-center gap-2">
-              <Link href="/profile" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
-                {pathname?.startsWith('/ar') ? 'الملف الشخصي' : 'Profile'}
-              </Link>
-              <button onClick={() => supabase?.auth.signOut()} className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10">
-                {pathname?.startsWith('/ar') ? 'تسجيل الخروج' : 'Logout'}
-              </button>
-            </div>
-          ) : (
-            <div className="hidden sm:flex items-center gap-2">
-              <Link href="/login" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
-                {pathname?.startsWith('/ar') ? 'تسجيل الدخول' : 'Login'}
-              </Link>
-              <Link href="/signup" className="rounded-md border px-3 py-1.5 text-sm border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
-                {pathname?.startsWith('/ar') ? 'إنشاء حساب' : 'Sign up'}
-              </Link>
-            </div>
-          )}
         </div>
       </div>
 
@@ -153,7 +121,6 @@ export default function Header() {
               {pathname?.startsWith('/ar') ? 'الغرف' : 'Rooms'}
             </Link>
             
-
 
             {/* Search in Mobile */}
             <div className="pt-2">
@@ -185,49 +152,9 @@ export default function Header() {
                 {pathname?.startsWith('/ar') ? 'Switch to English' : 'التبديل إلى العربية'}
               </Link>
             </div>
-
-            {/* Auth buttons in Mobile */}
-            <div className="border-t border-white/10 pt-2 mt-2 space-y-1">
-              {authed ? (
-                <>
-                  <Link 
-                    href="/profile" 
-                    className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {pathname?.startsWith('/ar') ? 'ملفي الشخصي' : 'My Profile'}
-                  </Link>
-                  <button 
-                    onClick={() => { supabase?.auth.signOut(); setMobileMenuOpen(false); }} 
-                    className="w-full text-left px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10"
-                  >
-                    {pathname?.startsWith('/ar') ? 'تسجيل الخروج' : 'Logout'}
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link 
-                    href="/login" 
-                    className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {pathname?.startsWith('/ar') ? 'تسجيل الدخول' : 'Login'}
-                  </Link>
-                  <Link 
-                    href="/signup" 
-                    className="block w-full text-center px-3 py-2 text-sm rounded border border-white/15 hover:bg-white/10 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-red-900 to-slate-900"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {pathname?.startsWith('/ar') ? 'إنشاء حساب' : 'Sign up'}
-                  </Link>
-                </>
-              )}
-            </div>
           </nav>
         </div>
       )}
     </div>
   )
 }
-
-

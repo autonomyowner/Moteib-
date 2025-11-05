@@ -2,82 +2,49 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { supabase, supabaseConfigured } from "../../../lib/supabase";
-
-interface Room {
-  id: string;
-  room_name: string;
-  title: string;
-  description: string;
-  max_participants: number;
-  created_at: string;
-}
 
 export default function JoinRoomPage() {
   const params = useParams<{ roomName: string }>();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [room, setRoom] = useState<Room | null>(null);
   const [error, setError] = useState<string>("");
   const [joining, setJoining] = useState(false);
 
   useEffect(() => {
-    const fetchRoom = async () => {
+    const validateRoom = async () => {
       if (!params.roomName) {
         setError("Invalid room link");
         setLoading(false);
         return;
       }
 
-      try {
-        // Decode the room name in case it's URL encoded
-        const decodedRoomName = decodeURIComponent(params.roomName);
-        console.log("Fetching room:", { original: params.roomName, decoded: decodedRoomName });
-        
-        const response = await fetch(`/api/rooms/join?roomName=${encodeURIComponent(decodedRoomName)}`);
-        
-        console.log("Response status:", response.status);
-        const responseData = await response.json();
-        console.log("Response data:", responseData);
-        
-        if (!response.ok) {
-          throw new Error(responseData.error || "Failed to load room");
-        }
-
-        setRoom(responseData.room);
-      } catch (err) {
-        console.error("Join room error:", err);
-        setError(err instanceof Error ? err.message : "Failed to load room");
-      } finally {
+      // Decode the room name in case it's URL encoded
+      const decodedRoomName = decodeURIComponent(params.roomName);
+      
+      // Validate room name format
+      const roomNameRegex = /^[a-zA-Z0-9_-]+$/;
+      if (!roomNameRegex.test(decodedRoomName)) {
+        setError("Invalid room name format");
         setLoading(false);
+        return;
       }
+
+      setLoading(false);
     };
 
-    fetchRoom();
+    validateRoom();
   }, [params.roomName]);
 
   const handleJoinRoom = async () => {
-    if (!room) return;
+    if (!params.roomName) return;
     
     setJoining(true);
     
-    // Check if user is logged in
-    if (!supabaseConfigured || !supabase) {
-      // Redirect to login with return URL
-      router.push(`/login?redirect=/join/${room.room_name}`);
-      return;
-    }
-
-    const { data: { session } } = await supabase.auth.getSession();
+    // Decode room name
+    const decodedRoomName = decodeURIComponent(params.roomName);
     
-    if (!session) {
-      // Redirect to login with return URL
-      router.push(`/login?redirect=/join/${encodeURIComponent(room.room_name)}`);
-      return;
-    }
-
-    // Join the room
-    router.push(`/call/${encodeURIComponent(room.room_name)}`);
+    // Join the room directly (no authentication needed)
+    router.push(`/call/${encodeURIComponent(decodedRoomName)}`);
   };
 
   if (loading) {
@@ -98,7 +65,7 @@ export default function JoinRoomPage() {
             <div className="w-20 h-20 mx-auto rounded-full border-4 border-black/10 border-t-amber-500 animate-spin"></div>
           </div>
           <h2 className="text-xl font-bold text-slate-900 mb-2">Loading...</h2>
-          <p className="text-slate-700 text-sm">Fetching room details</p>
+          <p className="text-slate-700 text-sm">Validating room</p>
         </div>
       </main>
     );
@@ -136,6 +103,8 @@ export default function JoinRoomPage() {
     );
   }
 
+  const roomName = params.roomName ? decodeURIComponent(params.roomName) : "";
+
   return (
     <main className="relative min-h-screen flex items-center justify-center">
       <div
@@ -160,28 +129,8 @@ export default function JoinRoomPage() {
 
           <div className="text-left space-y-3">
             <div>
-              <h2 className="text-xl font-semibold text-slate-900">{room?.title}</h2>
-              <p className="text-sm text-slate-600 font-mono">{room?.room_name}</p>
-            </div>
-            
-            {room?.description && (
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-1">Description</h3>
-                <p className="text-sm text-slate-600">{room.description}</p>
-              </div>
-            )}
-
-            <div className="flex items-center gap-4 text-sm text-slate-600">
-              <div className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-                <span>Max {room?.max_participants} participants</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                <span>Active</span>
-              </div>
+              <h2 className="text-xl font-semibold text-slate-900">{roomName}</h2>
+              <p className="text-sm text-slate-600 font-mono">{roomName}</p>
             </div>
           </div>
 
@@ -204,10 +153,6 @@ export default function JoinRoomPage() {
               </>
             )}
           </button>
-
-          <p className="text-xs text-slate-600">
-            You&apos;ll need to be logged in to join the voice room
-          </p>
         </div>
       </div>
     </main>

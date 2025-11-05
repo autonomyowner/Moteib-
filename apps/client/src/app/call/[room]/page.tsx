@@ -3,7 +3,6 @@
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import VoiceRoom from "@/components/VoiceRoom";
-import { supabase, supabaseConfigured } from "@/lib/supabase";
 
 export default function CallPage({ 
   params 
@@ -15,55 +14,35 @@ export default function CallPage({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
   const [displayName, setDisplayName] = useState<string>("Guest");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [roomExists, setRoomExists] = useState(false);
+  const [roomValid, setRoomValid] = useState(false);
 
   useEffect(() => {
-    const checkAuthAndRoom = async () => {
-      if (!supabaseConfigured || !supabase) {
-        setError("Authentication not configured");
+    const initializeRoom = async () => {
+      // Validate room name format
+      const roomNameRegex = /^[a-zA-Z0-9_-]+$/;
+      if (!roomNameRegex.test(resolvedParams.room)) {
+        setError("Invalid room name format");
         setLoading(false);
         return;
       }
 
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-      
-      if (sessionError) {
-        setError("Failed to check authentication");
-        setLoading(false);
-        return;
+      // Get display name from localStorage or use default
+      const storedName = localStorage.getItem("trav voices-display-name");
+      if (storedName) {
+        setDisplayName(storedName);
+      } else {
+        // Generate a random guest name
+        const guestName = `Guest-${Math.random().toString(36).substring(2, 7)}`;
+        setDisplayName(guestName);
+        localStorage.setItem("trav voices-display-name", guestName);
       }
 
-      if (!session) {
-        router.replace(`/login?redirect=${encodeURIComponent(`/call/${resolvedParams.room}`)}`);
-        return;
-      }
-
-      // Check if room exists and is active
-      try {
-        const response = await fetch(`/api/rooms/join?roomName=${encodeURIComponent(resolvedParams.room)}`);
-        const data = await response.json();
-        
-        if (!response.ok) {
-          setError(data.error || "Room not found or is no longer active");
-          setLoading(false);
-          return;
-        }
-
-        setRoomExists(true);
-      } catch (err) {
-        setError("Failed to verify room. Please try again.");
-        setLoading(false);
-        return;
-      }
-
-      setIsAuthenticated(true);
-      setDisplayName(session.user.email?.split("@")[0] || "TRAVoices User");
+      setRoomValid(true);
       setLoading(false);
     };
 
-    checkAuthAndRoom();
-  }, [resolvedParams.room, router]);
+    initializeRoom();
+  }, [resolvedParams.room]);
 
   if (loading) {
     return (
@@ -84,14 +63,14 @@ export default function CallPage({
               <div className="w-20 h-20 mx-auto rounded-full border-4 border-black/10 border-t-amber-500 animate-spin"></div>
             </div>
             <h2 className="text-xl font-bold text-slate-900 mb-2">Loading...</h2>
-            <p className="text-slate-700 text-sm">Checking authentication</p>
+            <p className="text-slate-700 text-sm">Preparing room</p>
           </div>
         </div>
       </main>
     );
   }
 
-  if (error) {
+  if (error || !roomValid) {
     return (
       <main className="space-y-12 relative min-h-screen">
         <div
@@ -109,8 +88,8 @@ export default function CallPage({
             <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
-            <h2 className="text-xl font-bold text-red-900 mb-2">Room Not Found</h2>
-            <p className="text-red-700 text-sm mb-6">{error}</p>
+            <h2 className="text-xl font-bold text-red-900 mb-2">Room Error</h2>
+            <p className="text-red-700 text-sm mb-6">{error || "Invalid room"}</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button 
                 onClick={() => router.push("/rooms")} 
@@ -134,10 +113,5 @@ export default function CallPage({
     );
   }
 
-  if (!isAuthenticated || !roomExists) {
-    return null;
-  }
-
   return <VoiceRoom room={resolvedParams.room} displayName={displayName} />;
 }
-

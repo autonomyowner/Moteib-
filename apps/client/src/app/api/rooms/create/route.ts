@@ -1,45 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
 export const revalidate = 0;
 
 export async function POST(req: NextRequest) {
   try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if (!supabaseUrl || !supabaseAnonKey) {
-      return NextResponse.json(
-        { error: "Supabase not configured" },
-        { status: 500 }
-      );
-    }
-
-    const authHeader = req.headers.get("authorization");
-    if (!authHeader) {
-      return NextResponse.json(
-        { error: "Missing authorization header" },
-        { status: 401 }
-      );
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-      global: { headers: { Authorization: authHeader } },
-    });
-
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-
-    if (authError || !user) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
-    }
-
     const body = await req.json();
     const { roomName, title, description, maxParticipants } = body;
 
@@ -50,47 +15,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if user profile exists
-    const { data: userProfile, error: profileError } = await supabase
-      .from("users")
-      .select("id")
-      .eq("id", user.id)
-      .single();
-
-    // Create user profile if it doesn't exist
-    if (profileError || !userProfile) {
-      const { error: insertError } = await supabase
-        .from("users")
-        .insert({ id: user.id, onboarded: true });
-
-      if (insertError) {
-        return NextResponse.json(
-          { error: "Failed to create user profile" },
-          { status: 500 }
-        );
-      }
-    }
-
-    // Create the room
-    const { data: room, error: roomError } = await supabase
-      .from("rooms")
-      .insert({
-        room_name: roomName,
-        owner_id: user.id,
-        title: title || "Untitled Room",
-        description: description || "",
-        max_participants: maxParticipants || 10,
-        is_active: true,
-      })
-      .select()
-      .single();
-
-    if (roomError) {
+    // Validate room name format (alphanumeric, hyphens, underscores only)
+    const roomNameRegex = /^[a-zA-Z0-9_-]+$/;
+    if (!roomNameRegex.test(roomName)) {
       return NextResponse.json(
-        { error: roomError.message },
+        { error: "Room name must contain only alphanumeric characters, hyphens, and underscores" },
         { status: 400 }
       );
     }
+
+    // Return room data without database storage (ephemeral)
+    const room = {
+      room_name: roomName,
+      title: title || "Untitled Room",
+      description: description || "",
+      max_participants: maxParticipants || 10,
+      is_active: true,
+      created_at: new Date().toISOString(),
+    };
 
     return NextResponse.json({ room }, { status: 201 });
   } catch (error) {
@@ -101,4 +43,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
