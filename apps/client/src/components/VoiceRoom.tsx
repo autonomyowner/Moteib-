@@ -258,6 +258,9 @@ export default function VoiceRoom({
           </div>
         </section>
 
+        {/* Translation Controls */}
+        <TranslationControls roomName={room} />
+
         {/* Participants Display */}
         <ParticipantsDisplay />
 
@@ -283,6 +286,110 @@ export default function VoiceRoom({
         </div>
       </LiveKitRoom>
     </main>
+  );
+}
+
+// Translation Controls Component
+function TranslationControls({ roomName }: { roomName: string }) {
+  const [lang1, setLang1] = useState("ar"); // Default to Arabic
+  const [lang2, setLang2] = useState("fr"); // Default to French
+  const [isDispatching, setIsDispatching] = useState(false);
+  const [agentStatus, setAgentStatus] = useState<string | null>(null);
+  const [agentError, setAgentError] = useState<string | null>(null);
+
+  const handleStartTranslation = async () => {
+    setIsDispatching(true);
+    setAgentStatus(null);
+    setAgentError(null);
+
+    try {
+      const response = await fetch('/api/translation/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          roomName: roomName,
+          lang1: lang1,
+          lang2: lang2
+        }),
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.error || "Failed to start agent");
+      }
+
+      const result = await response.json();
+      setAgentStatus(`Agent dispatched (ID: ${result.dispatchId}). It will join shortly.`);
+    } catch (err: unknown) {
+      setAgentError(err instanceof Error ? err.message : "An unknown error occurred");
+    } finally {
+      setIsDispatching(false);
+    }
+  };
+
+  return (
+    <section className="max-w-2xl mx-auto px-4">
+      <div className="rounded-xl border border-black/10 bg-white/70 backdrop-blur p-6 space-y-4 text-slate-900">
+        <h2 className="text-xl font-bold">Real-time Translation</h2>
+        <div className="grid sm:grid-cols-3 gap-3">
+          <div className="sm:col-span-1">
+            <label htmlFor="lang1" className="block text-sm font-medium mb-1 text-slate-700">
+              Language 1
+            </label>
+            <select
+              id="lang1"
+              value={lang1}
+              onChange={(e) => setLang1(e.target.value)}
+              className="w-full rounded-md border border-black/20 bg-white/70 p-2 outline-none focus:ring-2 focus:ring-amber-400/50"
+            >
+              <option value="ar">Arabic (العربية)</option>
+              <option value="en">English</option>
+              <option value="fr">French (Français)</option>
+              <option value="es">Spanish (Español)</option>
+              <option value="de">German (Deutsch)</option>
+              {/* Add more languages as needed */}
+            </select>
+          </div>
+
+          <div className="sm:col-span-1">
+            <label htmlFor="lang2" className="block text-sm font-medium mb-1 text-slate-700">
+              Language 2
+            </label>
+            <select
+              id="lang2"
+              value={lang2}
+              onChange={(e) => setLang2(e.target.value)}
+              className="w-full rounded-md border border-black/20 bg-white/70 p-2 outline-none focus:ring-2 focus:ring-amber-400/50"
+            >
+              <option value="fr">French (Français)</option>
+              <option value="ar">Arabic (العربية)</option>
+              <option value="en">English</option>
+              <option value="es">Spanish (Español)</option>
+              <option value="de">German (Deutsch)</option>
+              {/* Add more languages as needed */}
+            </select>
+          </div>
+
+          <div className="sm:col-span-1 sm:self-end">
+            <button
+              onClick={handleStartTranslation}
+              disabled={isDispatching}
+              className="w-full h-10 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-semibold text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-500 shadow hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-white/30 disabled:opacity-50"
+            >
+              {isDispatching ? "Starting..." : "Start Agent"}
+            </button>
+          </div>
+        </div>
+
+        {agentStatus && (
+          <div className="text-sm text-green-700">{agentStatus}</div>
+        )}
+
+        {agentError && (
+          <div className="text-sm text-red-700">{agentError}</div>
+        )}
+      </div>
+    </section>
   );
 }
 
