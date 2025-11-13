@@ -43,7 +43,7 @@ export default function ContactPageArabic() {
       {/* Main Content */}
       <section className="grid md:grid-cols-2 gap-8">
         {/* Calendly Embed */}
-        <div className="rounded-xl border-2 border-amber-500 bg-white shadow-lg p-8 space-y-6">
+        <div className="rounded-xl border-2 border-amber-500 bg-[#f8f4ed] shadow-lg p-8 space-y-6">
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-slate-900">جدول مكالمتك</h2>
             <p className="text-base text-slate-700">
@@ -85,7 +85,7 @@ export default function ContactPageArabic() {
 
         {/* What to Expect */}
         <div className="space-y-6">
-          <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+          <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
             <h2 className="text-2xl font-bold text-slate-900">ماذا تتوقع</h2>
             <div className="space-y-4">
               <div className="space-y-2">
@@ -134,13 +134,13 @@ export default function ContactPageArabic() {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
                 href="/ar/programs"
-                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold border-2 border-slate-300 text-slate-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold border-2 border-slate-300 text-slate-900 hover:bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
               >
                 عرض البرامج
               </Link>
               <Link
                 href="/ar/coach"
-                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold border-2 border-slate-300 text-slate-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold border-2 border-slate-300 text-slate-900 hover:bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
               >
                 عن المدرب متعب
               </Link>
@@ -150,7 +150,7 @@ export default function ContactPageArabic() {
       </section>
 
       {/* Why Book Now */}
-      <section className="rounded-xl border border-slate-200 bg-white shadow-sm p-8 space-y-6">
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-8 space-y-6">
         <h2 className="text-2xl font-bold text-slate-900 text-center">لماذا تحجز استشارتك الآن؟</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           <div className="text-center space-y-3">

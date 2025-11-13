@@ -96,7 +96,7 @@ export default function LandingPage() {
         </div>
         <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
           {/* 6-Month Program */}
-          <div className="rounded-xl border-2 border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
+          <div className="rounded-xl border-2 border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
             <div className="space-y-2">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900">6-Month Program</h3>
               <p className="text-sm text-slate-600">Foundation Building</p>
@@ -134,7 +134,7 @@ export default function LandingPage() {
           </div>
 
           {/* 9-Month Program */}
-          <div className="rounded-xl border-2 border-amber-500 bg-white shadow-lg p-4 sm:p-6 space-y-4 relative">
+          <div className="rounded-xl border-2 border-amber-500 bg-[#f8f4ed] shadow-lg p-4 sm:p-6 space-y-4 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">
               MOST POPULAR
             </div>
@@ -175,7 +175,7 @@ export default function LandingPage() {
           </div>
 
           {/* 12-Month Program */}
-          <div className="rounded-xl border-2 border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
+          <div className="rounded-xl border-2 border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
             <div className="space-y-2">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900">12-Month Program</h3>
               <p className="text-sm text-slate-600">Complete Transformation</p>
@@ -216,7 +216,7 @@ export default function LandingPage() {
 
       {/* About Coach */}
       <section className="grid md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-        <div className="md:col-span-2 rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
+        <div className="md:col-span-2 rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Meet Your Coach</h2>
           <p className="text-sm sm:text-base text-slate-800">
             <span className="font-semibold">Coach Moteib Alajmi</span> is a certified leadership coach from Saudi Arabia with a proven track record of helping managers transform their leadership style and build balanced, successful lives.
@@ -232,7 +232,7 @@ export default function LandingPage() {
             <span aria-hidden="true">→</span>
           </Link>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 flex flex-col justify-center items-center">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 flex flex-col justify-center items-center">
           <div className="relative w-32 h-32 mb-3">
             <Image
               src="/logo.png"
@@ -248,7 +248,7 @@ export default function LandingPage() {
       </section>
 
       {/* What You'll Achieve */}
-      <section className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900">What You&apos;ll Achieve</h2>
         <p className="text-sm sm:text-base text-slate-800">
           Our coaching programs are designed to create lasting transformation in your leadership and life.
@@ -283,7 +283,7 @@ export default function LandingPage() {
 
       {/* Coaching Approach */}
       <section className="grid md:grid-cols-2 gap-4 sm:gap-6">
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Our Approach</h2>
           <p className="text-sm sm:text-base text-slate-800">
             Every coaching journey is personalized to your unique challenges, goals, and context. We combine proven frameworks with practical tools that you can apply immediately in your leadership role.
@@ -292,7 +292,7 @@ export default function LandingPage() {
             Through one-on-one sessions, actionable assignments, and ongoing support, you&apos;ll develop the skills and mindset needed to lead with confidence and balance.
           </p>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Who It&apos;s For</h2>
           <p className="text-sm sm:text-base text-slate-800">
             Our programs are ideal for managers and leaders who are committed to personal growth and want to create positive change in their teams and organizations.

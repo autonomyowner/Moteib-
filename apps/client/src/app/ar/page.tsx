@@ -112,7 +112,7 @@ export default function ArabicLandingPage() {
         </div>
         <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
           {/* 6-Month Program */}
-          <div className="rounded-xl border-2 border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
+          <div className="rounded-xl border-2 border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
             <div className="space-y-2">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900">برنامج 6 أشهر</h3>
               <p className="text-sm text-slate-600">بناء الأساسيات</p>
@@ -150,7 +150,7 @@ export default function ArabicLandingPage() {
           </div>
 
           {/* 9-Month Program */}
-          <div className="rounded-xl border-2 border-amber-500 bg-white shadow-lg p-4 sm:p-6 space-y-4 relative">
+          <div className="rounded-xl border-2 border-amber-500 bg-[#f8f4ed] shadow-lg p-4 sm:p-6 space-y-4 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">
               الأكثر شعبية
             </div>
@@ -191,7 +191,7 @@ export default function ArabicLandingPage() {
           </div>
 
           {/* 12-Month Program */}
-          <div className="rounded-xl border-2 border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
+          <div className="rounded-xl border-2 border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-4 hover:border-amber-500 transition-colors">
             <div className="space-y-2">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900">برنامج 12 شهر</h3>
               <p className="text-sm text-slate-600">التحول الكامل</p>
@@ -232,7 +232,7 @@ export default function ArabicLandingPage() {
 
       {/* About Coach */}
       <section className="grid md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-        <div className="md:col-span-2 rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
+        <div className="md:col-span-2 rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900">تعرّف على مدربك</h2>
           <p className="text-sm sm:text-base text-slate-800">
             <span className="font-semibold">المدرب متعب العجمي</span> هو مدرب قيادة معتمد من المملكة العربية السعودية يتمتع بسجل حافل في مساعدة المديرين على تحويل أسلوب قيادتهم وبناء حياة متوازنة وناجحة.
@@ -248,7 +248,7 @@ export default function ArabicLandingPage() {
             <span aria-hidden="true">←</span>
           </Link>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 flex flex-col justify-center items-center">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 flex flex-col justify-center items-center">
           <div className="relative w-32 h-32 mb-3">
             <Image
               src="/logo.png"
@@ -264,7 +264,7 @@ export default function ArabicLandingPage() {
       </section>
 
       {/* What You'll Achieve */}
-      <section className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900">ما الذي ستحققه</h2>
         <p className="text-sm sm:text-base text-slate-800">
           برامجنا التدريبية مصممة لخلق تحول دائم في قيادتك وحياتك.
@@ -299,7 +299,7 @@ export default function ArabicLandingPage() {
 
       {/* Coaching Approach */}
       <section className="grid md:grid-cols-2 gap-4 sm:gap-6">
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900">منهجنا</h2>
           <p className="text-sm sm:text-base text-slate-800">
             كل رحلة تدريبية مخصصة لتحدياتك وأهدافك وسياقك الفريد. نجمع بين الأطر المجربة والأدوات العملية التي يمكنك تطبيقها فورًا في دورك القيادي.
@@ -308,7 +308,7 @@ export default function ArabicLandingPage() {
             من خلال جلسات فردية، ومهام قابلة للتنفيذ، ودعم مستمر، ستطور المهارات والعقلية اللازمة للقيادة بثقة وتوازن.
           </p>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-2 sm:space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900">لمن هذا البرنامج</h2>
           <p className="text-sm sm:text-base text-slate-800">
             برامجنا مثالية للمديرين والقادة الملتزمين بالنمو الشخصي والراغبين في إحداث تغيير إيجابي في فرقهم ومؤسساتهم.

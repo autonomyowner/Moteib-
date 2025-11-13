@@ -30,7 +30,7 @@ export default function ProgramsPage() {
       <section className="space-y-6">
         <div className="grid md:grid-cols-3 gap-6">
           {/* 6-Month Program */}
-          <div className="rounded-xl border-2 border-slate-200 bg-white shadow-sm p-6 space-y-6 hover:border-amber-500 transition-colors">
+          <div className="rounded-xl border-2 border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-6 hover:border-amber-500 transition-colors">
             <div className="space-y-3">
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">6-Month Program</h2>
               <p className="text-base text-slate-600 font-semibold">Foundation Building</p>
@@ -87,7 +87,7 @@ export default function ProgramsPage() {
           </div>
 
           {/* 9-Month Program */}
-          <div className="rounded-xl border-2 border-amber-500 bg-white shadow-lg p-6 space-y-6 relative">
+          <div className="rounded-xl border-2 border-amber-500 bg-[#f8f4ed] shadow-lg p-6 space-y-6 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-900 text-xs font-bold px-4 py-1.5 rounded-full">
               MOST POPULAR
             </div>
@@ -151,7 +151,7 @@ export default function ProgramsPage() {
           </div>
 
           {/* 12-Month Program */}
-          <div className="rounded-xl border-2 border-slate-200 bg-white shadow-sm p-6 space-y-6 hover:border-amber-500 transition-colors">
+          <div className="rounded-xl border-2 border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-6 hover:border-amber-500 transition-colors">
             <div className="space-y-3">
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">12-Month Program</h2>
               <p className="text-base text-slate-600 font-semibold">Complete Transformation</p>
@@ -215,7 +215,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 overflow-x-auto">
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 overflow-x-auto">
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Program Comparison</h2>
         <table className="w-full text-sm">
           <thead>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f8f4ed;
   --foreground: #1a4b5f;
   --nc-accent-1: #8b5cf6; /* purple */
   --nc-accent-2: #22d3ee; /* cyan */
@@ -18,7 +18,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
+    --background: #f8f4ed;
     --foreground: #1a4b5f;
   }
 }
@@ -99,7 +99,7 @@ button.lk-disconnect-button:hover {
 
 .lk-device-menu,
 div.lk-device-menu {
-  background: white !important;
+  background: #f8f4ed !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   border-radius: 8px !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;

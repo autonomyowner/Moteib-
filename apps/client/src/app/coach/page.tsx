@@ -37,7 +37,7 @@ export default function CoachPage() {
 
       {/* About Section */}
       <section className="grid md:grid-cols-2 gap-8">
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">About Coach Moteib</h2>
           <p className="text-base text-slate-800 leading-relaxed">
             Coach Moteib Alajmi is a certified leadership coach based in Saudi Arabia, dedicated to helping managers and leaders build balanced, successful lives while achieving their professional goals.
@@ -50,7 +50,7 @@ export default function CoachPage() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">Coaching Philosophy</h2>
           <p className="text-base text-slate-800 leading-relaxed">
             &ldquo;True leadership isn&apos;t about achieving more at the expense of your well-being. It&apos;s about building a balanced life where professional excellence and personal fulfillment coexist.&rdquo;
@@ -80,7 +80,7 @@ export default function CoachPage() {
       </section>
 
       {/* Expertise Areas */}
-      <section className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8 space-y-6">
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 sm:p-8 space-y-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">Areas of Expertise</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 space-y-2">
@@ -124,7 +124,7 @@ export default function CoachPage() {
 
       {/* Credentials & Background */}
       <section className="grid md:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">Credentials & Certifications</h2>
           <ul className="space-y-3 text-base text-slate-700">
             <li className="flex items-start gap-3">
@@ -142,11 +142,11 @@ export default function CoachPage() {
             <li className="flex items-start gap-3">
               <span className="text-amber-500 text-xl">✓</span>
               <span>Executive Coaching Certification</span>
-            </li>
-          </ul>
+          </li>
+        </ul>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">Background</h2>
           <p className="text-base text-slate-700 leading-relaxed">
             Based in Saudi Arabia, Coach Moteib brings a unique perspective that blends international best practices with deep cultural understanding of the Middle Eastern business environment.
@@ -161,7 +161,7 @@ export default function CoachPage() {
       <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8 space-y-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">What Leaders Say</h2>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;Working with Coach Moteib transformed not just my leadership style, but my entire approach to life. I&apos;m now more effective at work while actually having time for my family.&rdquo;
             </p>
@@ -169,7 +169,7 @@ export default function CoachPage() {
               — Senior Manager, Technology Sector
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;The strategic thinking frameworks I learned have been invaluable. Coach Moteib helped me develop clarity and confidence in my decision-making.&rdquo;
             </p>
@@ -177,7 +177,7 @@ export default function CoachPage() {
               — Director, Healthcare Organization
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;The personalized approach and practical tools made all the difference. I saw immediate improvements in my team&apos;s performance and morale.&rdquo;
             </p>
@@ -185,7 +185,7 @@ export default function CoachPage() {
               — Team Lead, Financial Services
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;Coach Moteib&apos;s insights into balancing cultural expectations with modern leadership practices were exactly what I needed.&rdquo;
             </p>

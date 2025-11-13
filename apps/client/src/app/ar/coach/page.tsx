@@ -51,7 +51,7 @@ export default function CoachPageArabic() {
 
       {/* About Section */}
       <section className="grid md:grid-cols-2 gap-8">
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">عن المدرب متعب</h2>
           <p className="text-base text-slate-800 leading-relaxed">
             المدرب متعب العجمي هو مدرب قيادة معتمد من المملكة العربية السعودية، مكرس لمساعدة المديرين والقادة على بناء حياة متوازنة وناجحة مع تحقيق أهدافهم المهنية.
@@ -64,7 +64,7 @@ export default function CoachPageArabic() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">فلسفة التدريب</h2>
           <p className="text-base text-slate-800 leading-relaxed">
             &ldquo;القيادة الحقيقية ليست في تحقيق المزيد على حساب رفاهيتك. إنها في بناء حياة متوازنة حيث يتعايش التميز المهني والإشباع الشخصي.&rdquo;
@@ -94,7 +94,7 @@ export default function CoachPageArabic() {
       </section>
 
       {/* Expertise Areas */}
-      <section className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8 space-y-6">
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 sm:p-8 space-y-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">مجالات الخبرة</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 space-y-2">
@@ -138,7 +138,7 @@ export default function CoachPageArabic() {
 
       {/* Credentials & Background */}
       <section className="grid md:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">الشهادات والمؤهلات</h2>
           <ul className="space-y-3 text-base text-slate-700">
             <li className="flex items-start gap-3">
@@ -160,7 +160,7 @@ export default function CoachPageArabic() {
           </ul>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
+        <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">الخلفية</h2>
           <p className="text-base text-slate-700 leading-relaxed">
             يقع المدرب متعب في المملكة العربية السعودية، ويجلب منظورًا فريدًا يمزج بين أفضل الممارسات الدولية والفهم الثقافي العميق لبيئة الأعمال في الشرق الأوسط.
@@ -175,7 +175,7 @@ export default function CoachPageArabic() {
       <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8 space-y-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">ماذا يقول القادة</h2>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;العمل مع المدرب متعب غيّر ليس فقط أسلوب قيادتي، بل نهجي الكامل للحياة. أنا الآن أكثر فعالية في العمل بينما لدي في الواقع وقت لعائلتي.&rdquo;
             </p>
@@ -183,7 +183,7 @@ export default function CoachPageArabic() {
               — مدير أول، قطاع التكنولوجيا
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;أطر التفكير الاستراتيجي التي تعلمتها كانت لا تقدر بثمن. ساعدني المدرب متعب على تطوير الوضوح والثقة في اتخاذ قراراتي.&rdquo;
             </p>
@@ -191,7 +191,7 @@ export default function CoachPageArabic() {
               — مدير، منظمة الرعاية الصحية
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;النهج الشخصي والأدوات العملية أحدثت كل الفرق. رأيت تحسينات فورية في أداء فريقي ومعنوياته.&rdquo;
             </p>
@@ -199,7 +199,7 @@ export default function CoachPageArabic() {
               — قائد فريق، الخدمات المالية
             </p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-3">
+          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
               &ldquo;رؤى المدرب متعب في الموازنة بين التوقعات الثقافية وممارسات القيادة الحديثة كانت بالضبط ما احتجته.&rdquo;
             </p>
@@ -229,7 +229,7 @@ export default function CoachPageArabic() {
           </Link>
           <Link
             href="/ar/programs"
-            className="inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold border-2 border-slate-900 text-slate-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold border-2 border-slate-900 text-slate-900 hover:bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
           >
             عرض برامج التدريب
           </Link>
