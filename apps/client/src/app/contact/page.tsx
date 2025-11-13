@@ -140,27 +140,18 @@ export default function ContactPage() {
         <h2 className="text-2xl font-bold text-slate-900 text-center">Why Book Your Consultation Now?</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-2xl">🎯</span>
-            </div>
             <h3 className="font-semibold text-slate-900">Gain Clarity</h3>
             <p className="text-sm text-slate-700">
               Get crystal clear on your leadership goals and the path to achieve them.
             </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-2xl">🚀</span>
-            </div>
             <h3 className="font-semibold text-slate-900">Accelerate Growth</h3>
             <p className="text-sm text-slate-700">
               Learn how structured coaching can fast-track your leadership development.
             </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-2xl">🤝</span>
-            </div>
             <h3 className="font-semibold text-slate-900">Find Your Fit</h3>
             <p className="text-sm text-slate-700">
               Discover if coaching with Coach Moteib is the right match for your needs.

@@ -271,27 +271,27 @@ export default function ArabicLandingPage() {
         </p>
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-800">
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">🎯 اتجاه واضح</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">اتجاه واضح</span>
             تطوير رؤية واضحة لرحلتك القيادية ومسارك المهني.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">⚖️ توازن بين العمل والحياة</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">توازن بين العمل والحياة</span>
             بناء عادات مستدامة تدعم النجاح المهني والشخصي.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">👥 تميّز الفريق</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">تميّز الفريق</span>
             تعلّم كيفية إلهام وتحفيز وتطوير فرق عالية الأداء.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">💡 تفكير استراتيجي</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">تفكير استراتيجي</span>
             تعزيز قدراتك في اتخاذ القرارات والتخطيط الاستراتيجي.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">🗣️ تواصل واثق</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">تواصل واثق</span>
             إتقان فن التواصل الواضح والمؤثر على جميع المستويات.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">🚀 نمو دائم</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">نمو دائم</span>
             خلق تغيير مستدام يستمر لفترة طويلة بعد انتهاء التدريب.
           </li>
         </ul>

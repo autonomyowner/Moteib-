@@ -255,27 +255,27 @@ export default function LandingPage() {
         </p>
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-800">
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">🎯 Clear Direction</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">Clear Direction</span>
             Develop a clear vision for your leadership journey and career path.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">⚖️ Work-Life Balance</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">Work-Life Balance</span>
             Build sustainable habits that support both professional and personal success.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">👥 Team Excellence</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">Team Excellence</span>
             Learn to inspire, motivate, and develop high-performing teams.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">💡 Strategic Thinking</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">Strategic Thinking</span>
             Enhance your decision-making and strategic planning capabilities.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">🗣️ Confident Communication</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">Confident Communication</span>
             Master the art of clear, impactful communication at all levels.
           </li>
           <li className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-4">
-            <span className="block font-semibold text-sm sm:text-base mb-1">🚀 Lasting Growth</span>
+            <span className="block font-semibold text-sm sm:text-base mb-1">Lasting Growth</span>
             Create sustainable change that continues long after coaching ends.
           </li>
         </ul>

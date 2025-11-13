@@ -154,27 +154,18 @@ export default function ContactPageArabic() {
         <h2 className="text-2xl font-bold text-slate-900 text-center">لماذا تحجز استشارتك الآن؟</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-2xl">🎯</span>
-            </div>
             <h3 className="font-semibold text-slate-900">احصل على الوضوح</h3>
             <p className="text-sm text-slate-700">
               احصل على وضوح تام بشأن أهدافك القيادية والطريق لتحقيقها.
             </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-2xl">🚀</span>
-            </div>
             <h3 className="font-semibold text-slate-900">تسريع النمو</h3>
             <p className="text-sm text-slate-700">
               تعلم كيف يمكن للتدريب المنظم أن يسرع تطوير قيادتك.
             </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-2xl">🤝</span>
-            </div>
             <h3 className="font-semibold text-slate-900">اعثر على ما يناسبك</h3>
             <p className="text-sm text-slate-700">
               اكتشف ما إذا كان التدريب مع المدرب مطيب هو التوافق الصحيح لاحتياجاتك.

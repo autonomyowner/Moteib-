@@ -6,6 +6,7 @@
   - Variables: descriptive nouns. Avoid 1–2 char names.
 - Control flow: prefer early returns; guard clauses; avoid deep nesting.
 - Styling: Tailwind CSS; prefer `class:` conditional utilities over ternaries when supported.
+- Visuals: Avoid icons, emoji, or decorative glyphs; rely on typography, spacing, and color for emphasis.
 - Accessibility: ARIA labels, keyboard navigation, focus states for interactive elements.
 - Error handling: typed errors; surface actionable messages; no silent failures.
 - Comments: explain “why”, not “how”. Keep concise.
