@@ -1,24 +1,19 @@
 {
   "name": "mindshift-arabia",
   "version": "1.0.0",
-  "description": "AI-powered real-time voice translation platform",
+  "description": "Leadership coaching platform helping managers build balanced lives with Coach Moteib Alajmi",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:client": "npm --workspace apps/client run dev",
-    "dev:server": "npm --workspace apps/server run dev",
-    "dev": "concurrently -n client,server -c blue,green \"npm:dev:client\" \"npm:dev:server\""
+    "dev": "npm --workspace apps/client run dev"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["coaching", "leadership", "balanced-life", "saudi-arabia"],
+  "author": "Coach Moteib Alajmi",
   "license": "ISC",
   "type": "commonjs",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "devDependencies": {
-    "concurrently": "^9.2.0"
-  }
+  ]
 }

@@ -1,4 +1,0 @@
-livekit-agents[google,cartesia,deepgram,silero]
-python-dotenv
-httpx
-
