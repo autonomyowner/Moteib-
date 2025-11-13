@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -36,7 +36,7 @@ export default function ContactPageArabic() {
         <p className={`mx-auto max-w-3xl text-base sm:text-lg text-slate-700 px-2 transition-all duration-1000 delay-300 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          اتخذ الخطوة الأولى نحو تحويل قيادتك. جدول استشارة مجانية مع المدرب مطيب العجمي.
+          اتخذ الخطوة الأولى نحو تحويل قيادتك. جدول استشارة مجانية مع المدرب متعب العجمي.
         </p>
       </section>
 
@@ -111,7 +111,7 @@ export default function ContactPageArabic() {
                   <span className="text-amber-500">3.</span> توصيات البرنامج
                 </h3>
                 <p className="text-sm text-slate-700">
-                  بناءً على احتياجاتك، سيوصي المدرب مطيب بالبرنامج الذي يتماشى بشكل أفضل مع أهدافك وجدولك الزمني.
+                  بناءً على احتياجاتك، سيوصي المدرب متعب بالبرنامج الذي يتماشى بشكل أفضل مع أهدافك وجدولك الزمني.
                 </p>
               </div>
 
@@ -129,7 +129,7 @@ export default function ContactPageArabic() {
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 space-y-3">
             <h3 className="text-lg font-semibold text-slate-900">لديك أسئلة؟</h3>
             <p className="text-sm text-slate-700">
-              إذا كنت ترغب في معرفة المزيد قبل الحجز، لا تتردد في استكشاف برامج التدريب الخاصة بنا أو معرفة المزيد عن المدرب مطيب.
+              إذا كنت ترغب في معرفة المزيد قبل الحجز، لا تتردد في استكشاف برامج التدريب الخاصة بنا أو معرفة المزيد عن المدرب متعب.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
@@ -142,7 +142,7 @@ export default function ContactPageArabic() {
                 href="/ar/coach"
                 className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold border-2 border-slate-300 text-slate-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
               >
-                عن المدرب مطيب
+                عن المدرب متعب
               </Link>
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function ContactPageArabic() {
           <div className="text-center space-y-3">
             <h3 className="font-semibold text-slate-900">اعثر على ما يناسبك</h3>
             <p className="text-sm text-slate-700">
-              اكتشف ما إذا كان التدريب مع المدرب مطيب هو التوافق الصحيح لاحتياجاتك.
+              اكتشف ما إذا كان التدريب مع المدرب متعب هو التوافق الصحيح لاحتياجاتك.
             </p>
           </div>
         </div>
