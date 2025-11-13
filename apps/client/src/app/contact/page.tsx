@@ -22,7 +22,7 @@ export default function ContactPage() {
         <p className={`mx-auto max-w-3xl text-base sm:text-lg text-slate-700 px-2 transition-all duration-1000 delay-300 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          Take the first step towards transforming your leadership. Schedule a complimentary consultation with Coach Moteib Alajmi.
+          Take the first step towards transforming your leadership. Schedule a complimentary consultation with Moteib bin Nasser AlAjmi.
         </p>
       </section>
 
@@ -97,7 +97,7 @@ export default function ContactPage() {
                   <span className="text-amber-500">3.</span> Program Recommendations
                 </h3>
                 <p className="text-sm text-slate-700">
-                  Based on your needs, Coach Moteib will recommend the program that best aligns with your goals and timeline.
+                  Based on your needs, Moteib bin Nasser AlAjmi will recommend the program that best aligns with your goals and timeline.
                 </p>
               </div>
 
@@ -115,7 +115,7 @@ export default function ContactPage() {
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 space-y-3">
             <h3 className="text-lg font-semibold text-slate-900">Have Questions?</h3>
             <p className="text-sm text-slate-700">
-              If you&apos;d like to learn more before booking, feel free to explore our coaching programs or learn more about Coach Moteib.
+              If you&apos;d like to learn more before booking, feel free to explore our coaching programs or learn more about Moteib bin Nasser AlAjmi.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
@@ -128,7 +128,7 @@ export default function ContactPage() {
                 href="/coach"
                 className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold border-2 border-slate-300 text-slate-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-300 transition-colors"
               >
-                About Coach Moteib
+                About the Coach
               </Link>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function ContactPage() {
           <div className="text-center space-y-3">
             <h3 className="font-semibold text-slate-900">Find Your Fit</h3>
             <p className="text-sm text-slate-700">
-              Discover if coaching with Coach Moteib is the right match for your needs.
+              Discover if coaching with Moteib bin Nasser AlAjmi is the right match for your needs.
             </p>
           </div>
         </div>

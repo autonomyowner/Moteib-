@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "MINDSHIFT ARABIA | Leadership Coaching",
-  description: "Leadership coaching for balanced management. Coach Moteib Alajmi helps managers build balanced lives through proven coaching programs in Saudi Arabia.",
+  description: "Leadership coaching for balanced management. Moteib bin Nasser AlAjmi helps managers build balanced lives through proven coaching programs in Saudi Arabia.",
 };
 
 export default function RootLayout({

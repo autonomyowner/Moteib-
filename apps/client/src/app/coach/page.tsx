@@ -21,13 +21,13 @@ export default function CoachPage() {
           <div className="relative w-40 h-40 mx-auto mb-6">
             <Image
               src="/logo.png"
-              alt="Coach Moteib Alajmi"
+              alt="Moteib bin Nasser AlAjmi"
               fill
               className="object-contain"
             />
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
-            Coach Moteib Alajmi
+            Moteib bin Nasser AlAjmi
           </h1>
           <p className="text-lg sm:text-xl text-amber-600 font-semibold mt-3">
             Certified Leadership Coach | Saudi Arabia
@@ -38,15 +38,15 @@ export default function CoachPage() {
       {/* About Section */}
       <section className="grid md:grid-cols-2 gap-8">
         <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
-          <h2 className="text-2xl font-bold text-slate-900">About Coach Moteib</h2>
+          <h2 className="text-2xl font-bold text-slate-900">About Moteib bin Nasser AlAjmi</h2>
           <p className="text-base text-slate-800 leading-relaxed">
-            Coach Moteib Alajmi is a certified leadership coach based in Saudi Arabia, dedicated to helping managers and leaders build balanced, successful lives while achieving their professional goals.
+            Moteib bin Nasser AlAjmi is a certified leadership coach based in Saudi Arabia, dedicated to helping managers and leaders build balanced, successful lives while achieving their professional goals.
           </p>
           <p className="text-base text-slate-700 leading-relaxed">
-            With a deep understanding of the unique challenges facing leaders in today&apos;s fast-paced world, Coach Moteib brings a practical, results-oriented approach to leadership development. His coaching philosophy centers on creating sustainable change that extends beyond professional success to encompass personal fulfillment and well-being.
+            With a deep understanding of the unique challenges facing leaders in today&apos;s fast-paced world, Moteib bin Nasser AlAjmi brings a practical, results-oriented approach to leadership development. His coaching philosophy centers on creating sustainable change that extends beyond professional success to encompass personal fulfillment and well-being.
           </p>
           <p className="text-base text-slate-700 leading-relaxed">
-            Having worked with managers across various industries and organizational levels, Coach Moteib has developed a proven methodology that combines evidence-based practices with culturally relevant insights tailored to the Saudi Arabian and Middle Eastern context.
+            Having worked with managers across various industries and organizational levels, Moteib bin Nasser AlAjmi has developed a proven methodology that combines evidence-based practices with culturally relevant insights tailored to the Saudi Arabian and Middle Eastern context.
           </p>
         </div>
 
@@ -56,7 +56,7 @@ export default function CoachPage() {
             &ldquo;True leadership isn&apos;t about achieving more at the expense of your well-being. It&apos;s about building a balanced life where professional excellence and personal fulfillment coexist.&rdquo;
           </p>
           <p className="text-base text-slate-700 leading-relaxed">
-            Coach Moteib believes that the most effective leaders are those who:
+            Moteib bin Nasser AlAjmi believes that the most effective leaders are those who:
           </p>
           <ul className="space-y-2 text-base text-slate-700">
             <li className="flex items-start gap-2">
@@ -149,7 +149,7 @@ export default function CoachPage() {
         <div className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 space-y-4">
           <h2 className="text-2xl font-bold text-slate-900">Background</h2>
           <p className="text-base text-slate-700 leading-relaxed">
-            Based in Saudi Arabia, Coach Moteib brings a unique perspective that blends international best practices with deep cultural understanding of the Middle Eastern business environment.
+            Based in Saudi Arabia, Moteib bin Nasser AlAjmi brings a unique perspective that blends international best practices with deep cultural understanding of the Middle Eastern business environment.
           </p>
           <p className="text-base text-slate-700 leading-relaxed">
             His work spans private and public sectors, helping leaders at all levels—from emerging managers to C-suite executives—develop the skills and mindset needed for sustainable success.
@@ -163,7 +163,7 @@ export default function CoachPage() {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;Working with Coach Moteib transformed not just my leadership style, but my entire approach to life. I&apos;m now more effective at work while actually having time for my family.&rdquo;
+              &ldquo;Working with Moteib bin Nasser AlAjmi transformed not just my leadership style, but my entire approach to life. I&apos;m now more effective at work while actually having time for my family.&rdquo;
             </p>
             <p className="text-sm text-slate-600 font-semibold">
               — Senior Manager, Technology Sector
@@ -171,7 +171,7 @@ export default function CoachPage() {
           </div>
           <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;The strategic thinking frameworks I learned have been invaluable. Coach Moteib helped me develop clarity and confidence in my decision-making.&rdquo;
+              &ldquo;The strategic thinking frameworks I learned have been invaluable. Moteib bin Nasser AlAjmi helped me develop clarity and confidence in my decision-making.&rdquo;
             </p>
             <p className="text-sm text-slate-600 font-semibold">
               — Director, Healthcare Organization
@@ -187,7 +187,7 @@ export default function CoachPage() {
           </div>
           <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
             <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;Coach Moteib&apos;s insights into balancing cultural expectations with modern leadership practices were exactly what I needed.&rdquo;
+              &ldquo;Moteib bin Nasser AlAjmi&apos;s insights into balancing cultural expectations with modern leadership practices were exactly what I needed.&rdquo;
             </p>
             <p className="text-sm text-slate-600 font-semibold">
               — Executive, Public Sector

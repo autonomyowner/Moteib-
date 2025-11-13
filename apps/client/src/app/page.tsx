@@ -32,7 +32,7 @@ export default function LandingPage() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <span className={`inline-block transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>Build Balanced Leadership</span>{' '}
-          <span className={`inline-block transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>with Coach Moteib Alajmi</span>
+          <span className={`inline-block transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>with Moteib bin Nasser AlAjmi</span>
         </h1>
         <p className={`mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-slate-700 px-2 transition-all duration-1000 delay-700 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -219,16 +219,16 @@ export default function LandingPage() {
         <div className="md:col-span-2 rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Meet Your Coach</h2>
           <p className="text-sm sm:text-base text-slate-800">
-            <span className="font-semibold">Coach Moteib Alajmi</span> is a certified leadership coach from Saudi Arabia with a proven track record of helping managers transform their leadership style and build balanced, successful lives.
+            <span className="font-semibold">Moteib bin Nasser AlAjmi</span> is a certified leadership coach from Saudi Arabia with a proven track record of helping managers transform their leadership style and build balanced, successful lives.
           </p>
           <p className="text-sm sm:text-base text-slate-700">
-            With years of experience in leadership development and a deep understanding of the challenges facing modern managers, Coach Moteib combines practical strategies with personalized guidance to help you achieve sustainable growth.
+            With years of experience in leadership development and a deep understanding of the challenges facing modern managers, Moteib bin Nasser AlAjmi combines practical strategies with personalized guidance to help you achieve sustainable growth.
           </p>
           <Link
             href="/coach"
             className="inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors"
           >
-            Learn more about Coach Moteib
+            Learn more about Moteib bin Nasser AlAjmi
             <span aria-hidden="true">→</span>
           </Link>
         </div>
