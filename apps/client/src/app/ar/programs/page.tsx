@@ -82,8 +82,8 @@ export default function ProgramsPageArabic() {
             <div className="space-y-2 pt-3 border-t border-slate-200">
               <h3 className="text-base font-semibold text-slate-900">هيكل البرنامج</h3>
               <ul className="text-sm text-slate-700 space-y-1">
-                <li>• جلسات تدريب فردية كل أسبوعين (60 دقيقة)</li>
-                <li>• 12 جلسة إجمالاً</li>
+                <li>• جلسات تدريب فردية عبر الإنترنت كل أسبوعين (30 دقيقة)</li>
+                <li>• 25 جلسة إجمالاً</li>
                 <li>• دعم عبر البريد الإلكتروني بين الجلسات</li>
                 <li>• خطط عمل شخصية</li>
                 <li>• تقييمات التقدم</li>
@@ -146,8 +146,8 @@ export default function ProgramsPageArabic() {
             <div className="space-y-2 pt-3 border-t border-slate-200">
               <h3 className="text-base font-semibold text-slate-900">هيكل البرنامج</h3>
               <ul className="text-sm text-slate-700 space-y-1">
-                <li>• جلسات تدريب فردية أسبوعية (60 دقيقة)</li>
-                <li>• 36 جلسة إجمالاً</li>
+                <li>• جلسات تدريب فردية أسبوعية عبر الإنترنت (30 دقيقة)</li>
+                <li>• 37 جلسة إجمالاً</li>
                 <li>• دعم غير محدود عبر البريد الإلكتروني والرسائل</li>
                 <li>• تقييمات قيادية مخصصة</li>
                 <li>• مراجعات التقدم الفصلية</li>
@@ -207,8 +207,8 @@ export default function ProgramsPageArabic() {
             <div className="space-y-2 pt-3 border-t border-slate-200">
               <h3 className="text-base font-semibold text-slate-900">هيكل البرنامج</h3>
               <ul className="text-sm text-slate-700 space-y-1">
-                <li>• جلسات تدريب فردية أسبوعية (60 دقيقة)</li>
-                <li>• 48 جلسة إجمالاً</li>
+                <li>• جلسات تدريب فردية أسبوعية عبر الإنترنت (30 دقيقة)</li>
+                <li>• 50 جلسة إجمالاً</li>
                 <li>• دعم ذو أولوية على مدار الساعة</li>
                 <li>• تقييمات ملاحظات 360 درجة</li>
                 <li>• جلسات تخطيط استراتيجي فصلية</li>
@@ -243,9 +243,9 @@ export default function ProgramsPageArabic() {
           <tbody className="text-slate-700">
             <tr className="border-b border-slate-200">
               <td className="py-3 px-2">جلسات التدريب الفردية</td>
-              <td className="text-center py-3 px-2">12 جلسة</td>
-              <td className="text-center py-3 px-2 bg-amber-50">36 جلسة</td>
-              <td className="text-center py-3 px-2">48 جلسة</td>
+              <td className="text-center py-3 px-2">25 جلسة عبر الإنترنت (30 دقيقة)</td>
+              <td className="text-center py-3 px-2 bg-amber-50">37 جلسة عبر الإنترنت (30 دقيقة)</td>
+              <td className="text-center py-3 px-2">50 جلسة عبر الإنترنت (30 دقيقة)</td>
             </tr>
             <tr className="border-b border-slate-200">
               <td className="py-3 px-2">تكرار الجلسات</td>

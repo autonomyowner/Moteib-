@@ -68,8 +68,8 @@ export default function ProgramsPage() {
             <div className="space-y-2 pt-3 border-t border-slate-200">
               <h3 className="text-base font-semibold text-slate-900">Program Structure</h3>
               <ul className="text-sm text-slate-700 space-y-1">
-                <li>• Bi-weekly 1-on-1 coaching sessions (60 min)</li>
-                <li>• 12 total sessions</li>
+                <li>• Bi-weekly online 1-on-1 coaching sessions (30 min)</li>
+                <li>• 25 total sessions</li>
                 <li>• Email support between sessions</li>
                 <li>• Personalized action plans</li>
                 <li>• Progress assessments</li>
@@ -132,8 +132,8 @@ export default function ProgramsPage() {
             <div className="space-y-2 pt-3 border-t border-slate-200">
               <h3 className="text-base font-semibold text-slate-900">Program Structure</h3>
               <ul className="text-sm text-slate-700 space-y-1">
-                <li>• Weekly 1-on-1 coaching sessions (60 min)</li>
-                <li>• 36 total sessions</li>
+                <li>• Weekly online 1-on-1 coaching sessions (30 min)</li>
+                <li>• 37 total sessions</li>
                 <li>• Unlimited email & messaging support</li>
                 <li>• Customized leadership assessments</li>
                 <li>• Quarterly progress reviews</li>
@@ -193,8 +193,8 @@ export default function ProgramsPage() {
             <div className="space-y-2 pt-3 border-t border-slate-200">
               <h3 className="text-base font-semibold text-slate-900">Program Structure</h3>
               <ul className="text-sm text-slate-700 space-y-1">
-                <li>• Weekly 1-on-1 coaching sessions (60 min)</li>
-                <li>• 48 total sessions</li>
+                <li>• Weekly online 1-on-1 coaching sessions (30 min)</li>
+                <li>• 50 total sessions</li>
                 <li>• Priority 24/7 support</li>
                 <li>• 360-degree feedback assessments</li>
                 <li>• Quarterly strategic planning sessions</li>
@@ -229,9 +229,9 @@ export default function ProgramsPage() {
           <tbody className="text-slate-700">
             <tr className="border-b border-slate-200">
               <td className="py-3 px-2">1-on-1 Coaching Sessions</td>
-              <td className="text-center py-3 px-2">12 sessions</td>
-              <td className="text-center py-3 px-2 bg-amber-50">36 sessions</td>
-              <td className="text-center py-3 px-2">48 sessions</td>
+              <td className="text-center py-3 px-2">25 online sessions (30 min)</td>
+              <td className="text-center py-3 px-2 bg-amber-50">37 online sessions (30 min)</td>
+              <td className="text-center py-3 px-2">50 online sessions (30 min)</td>
             </tr>
             <tr className="border-b border-slate-200">
               <td className="py-3 px-2">Session Frequency</td>

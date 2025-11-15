@@ -47,13 +47,13 @@ export default function Header() {
           className="shrink-0 flex items-center gap-3 text-base md:text-lg font-bold select-none text-[inherit] hover:text-white/90 transition-all group"
           aria-label="MINDSHIFT ARABIA Home"
         >
-          <span className="relative h-10 w-10 md:h-12 md:w-12 rounded-full bg-white/10 p-1.5 group-hover:bg-white/20 transition-all group-hover:scale-105 overflow-hidden">
+          <span className="relative h-10 w-10 md:h-12 md:w-12 rounded-full bg-white p-1 group-hover:bg-white/90 transition-all group-hover:scale-105 overflow-hidden ring-2 ring-white/80 shadow-lg">
             <Image
               src="/logo.png"
               alt="MINDSHIFT ARABIA logo"
               fill
               sizes="(max-width: 768px) 40px, 48px"
-              className="object-contain drop-shadow-lg rounded-full"
+              className="object-cover rounded-full"
               priority
             />
           </span>
@@ -83,7 +83,7 @@ export default function Header() {
                 : 'text-white/90 hover:bg-white/10 hover:text-white'
             }`}
           >
-            {pathname?.startsWith('/ar') ? 'عن المدرب' : 'About Coach'}
+            {pathname?.startsWith('/ar') ? 'عن الكوتش' : 'About Coach'}
           </Link>
           <Link 
             href={pathname?.startsWith('/ar') ? '/ar/programs' : '/programs'} 
@@ -149,7 +149,7 @@ export default function Header() {
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {pathname?.startsWith('/ar') ? 'عن المدرب' : 'About Coach'}
+              {pathname?.startsWith('/ar') ? 'عن الكوتش' : 'About Coach'}
             </Link>
             <Link 
               href={pathname?.startsWith('/ar') ? '/ar/programs' : '/programs'} 
