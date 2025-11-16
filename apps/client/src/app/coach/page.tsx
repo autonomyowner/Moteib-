@@ -184,43 +184,7 @@ export default function CoachPage() {
       </section>
 
       {/* Success Stories */}
-      <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8 space-y-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">What Leaders Say</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;Working with Moteib bin Nasser AlAjmi transformed not just my leadership style, but my entire approach to life. I&apos;m now more effective at work while actually having time for my family.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — Senior Manager, Technology Sector
-            </p>
-          </div>
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;The strategic thinking frameworks I learned have been invaluable. Moteib bin Nasser AlAjmi helped me develop clarity and confidence in my decision-making.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — Director, Healthcare Organization
-            </p>
-          </div>
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;The personalized approach and practical tools made all the difference. I saw immediate improvements in my team&apos;s performance and morale.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — Team Lead, Financial Services
-            </p>
-          </div>
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;Moteib bin Nasser AlAjmi&apos;s insights into balancing cultural expectations with modern leadership practices were exactly what I needed.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — Executive, Public Sector
-            </p>
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="text-center space-y-6 rounded-xl border-2 border-amber-500 bg-gradient-to-br from-amber-50 to-yellow-50 p-8 sm:p-12">

@@ -172,43 +172,7 @@ export default function CoachPageArabic() {
       </section>
 
       {/* Success Stories */}
-      <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8 space-y-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">ماذا يقول القادة</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;العمل مع الكوتش متعب بن ناصر غيّر ليس فقط أسلوب قيادتي، بل نهجي الكامل للحياة. أنا الآن أكثر فعالية في العمل بينما لدي في الواقع وقت لعائلتي.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — مدير أول، قطاع التكنولوجيا
-            </p>
-          </div>
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;أطر التفكير الاستراتيجي التي تعلمتها كانت لا تقدر بثمن. ساعدني الكوتش متعب بن ناصر على تطوير الوضوح والثقة في اتخاذ قراراتي.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — مدير، منظمة الرعاية الصحية
-            </p>
-          </div>
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;النهج الشخصي والأدوات العملية أحدثت كل الفرق. رأيت تحسينات فورية في أداء فريقي ومعنوياته.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — قائد فريق، الخدمات المالية
-            </p>
-          </div>
-          <div className="bg-[#f8f4ed] rounded-lg p-6 shadow-sm space-y-3">
-            <p className="text-base text-slate-700 italic leading-relaxed">
-              &ldquo;رؤى الكوتش متعب بن ناصر في الموازنة بين التوقعات الثقافية وممارسات القيادة الحديثة كانت بالضبط ما احتجته.&rdquo;
-            </p>
-            <p className="text-sm text-slate-600 font-semibold">
-              — تنفيذي، القطاع العام
-            </p>
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="text-center space-y-6 rounded-xl border-2 border-amber-500 bg-gradient-to-br from-amber-50 to-yellow-50 p-8 sm:p-12">
