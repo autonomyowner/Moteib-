@@ -287,6 +287,134 @@ export default function ProgramsPageArabic() {
         </table>
       </section>
 
+      {/* Core Leadership Fundamentals Section */}
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 sm:p-8 space-y-6">
+        <div className="text-center space-y-3">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">أساسيات القيادة الجوهرية</h2>
+          <p className="text-base text-slate-700 max-w-3xl mx-auto">
+            نهجنا في التدريب مبني على مبادئ أساسية تساعد المدربين على التطور ليصبحوا قادة فعالين ومتوازنين. هذه الأساسيات الجوهرية مدمجة في جميع برامجنا.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          {/* Self-Awareness */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">تعزيز الوعي الذاتي</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              مساعدة المدربين على تطوير وعي ذاتي أعمق من خلال فهم نقاط قوتهم وضعفهم وأسلوب قيادتهم وتأثيرهم على الآخرين. من خلال التقييمات وتمارين التأمل والملاحظات، يتعلم المدربون التعرف على أنماطهم ومحفزاتهم ونقاط العمى لديهم.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>تحديد نقاط القوة القيادية الشخصية ومجالات النمو</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>فهم المحفزات العاطفية والاستجابات</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>إدراك التأثير على ديناميكيات الفريق والأداء</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Work-Life Balance */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">التوازن بين العمل والحياة</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              مساعدة المدربين على تحقيق توازن مستدام بين العمل والحياة من خلال وضع الحدود والأولويات بفعالية وإنشاء أنظمة تدعم التميز المهني والرفاهية الشخصية. تعلم القيادة دون التضحية بصحتك أو علاقاتك أو سعادتك.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>وضع حدود صحية والحفاظ عليها</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>تطوير عادات عمل مستدامة وروتينات</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>دمج الأولويات الشخصية مع الأهداف المهنية</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Goal Identification */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">تحديد الأهداف</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              مساعدة المدربين على تحديد ووضوح أهدافهم من خلال تمارين منظمة وتأمل عميق. التمييز بين ما تعتقد أنك تريده وما يهمك حقًا، وإنشاء أهداف واضحة وذات معنى تتماشى مع قيمك ورؤيتك.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>توضيح الطموحات الشخصية والمهنية</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>محاذاة الأهداف مع القيم الأساسية والغرض</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>وضع أهداف ذكية تلهم العمل</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Overcoming Leadership Dilemmas */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">التغلب على معضلات القيادة</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              مساعدة المدربين على التنقل في معضلات القيادة المعقدة والمواقف الصعبة بثقة. تطوير أطر لاتخاذ القرارات وحل النزاعات وإدارة الأولويات المتعارضة. تعلم اتخاذ قرارات صعبة مع الحفاظ على العلاقات والنزاهة.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>التنقل في القرارات الصعبة والمقايضات</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>حل النزاعات وإدارة توترات الفريق</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>التعامل مع توقعات أصحاب المصلحة المتعارضة</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Actionable Planning */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3 md:col-span-2 lg:col-span-1">
+            <h3 className="text-xl font-semibold text-slate-900">التخطيط القابل للتنفيذ</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              مساعدة المدربين على وضع خطط قابلة للتنفيذ لتحقيق أهدافهم. تحويل الطموحات إلى خطوات ملموسة مع الجداول الزمنية والمعالم وقياسات المساءلة. تعلم تقسيم الأهداف الكبيرة إلى إجراءات قابلة للإدارة وتتبع التقدم بفعالية.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>إنشاء خطط عمل خطوة بخطوة مع معالم واضحة</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>إنشاء أنظمة مساءلة وفحوصات</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>تكييف الخطط بناءً على التقدم والظروف المتغيرة</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-8 p-5 rounded-lg bg-amber-50 border border-amber-200">
+          <p className="text-sm text-slate-800 leading-relaxed">
+            <strong className="text-slate-900">كيف يعمل:</strong> هذه الأساسيات الجوهرية منسوجة في جميع جلسات التدريب. سيعمل مدربك معك لتقييم موقعك في كل مجال، وتحديد التحديات المحددة، وتطوير استراتيجيات شخصية لتعزيز أساس قيادتك. كل جلسة تبني على السابقة، مما يخلق رحلة تطوير شاملة.
+          </p>
+        </div>
+      </section>
+
       {/* Investment Section */}
       <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8 text-center space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">هل أنت مستعد للاستثمار في قيادتك؟</h2>

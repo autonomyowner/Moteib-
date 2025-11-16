@@ -273,6 +273,134 @@ export default function ProgramsPage() {
         </table>
       </section>
 
+      {/* Core Leadership Fundamentals Section */}
+      <section className="rounded-xl border border-slate-200 bg-[#f8f4ed] shadow-sm p-6 sm:p-8 space-y-6">
+        <div className="text-center space-y-3">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">Core Leadership Fundamentals</h2>
+          <p className="text-base text-slate-700 max-w-3xl mx-auto">
+            Our coaching approach is built on fundamental principles that help coaches develop into effective, balanced leaders. These core fundamentals are integrated throughout all our programs.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          {/* Self-Awareness */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">Enhanced Self-Awareness</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              Help coaches develop deeper self-awareness by understanding their strengths, weaknesses, leadership style, and impact on others. Through assessments, reflection exercises, and feedback, coaches learn to recognize their patterns, triggers, and blind spots.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Identify personal leadership strengths and growth areas</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Understand emotional triggers and responses</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Recognize impact on team dynamics and performance</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Work-Life Balance */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">Work-Life Balance</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              Help coaches achieve sustainable work-life balance by establishing boundaries, prioritizing effectively, and creating systems that support both professional excellence and personal well-being. Learn to lead without sacrificing your health, relationships, or happiness.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Set healthy boundaries and maintain them</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Develop sustainable work habits and routines</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Integrate personal priorities with professional goals</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Goal Identification */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">Goal Identification</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              Help coaches identify and clarify their goals through structured exercises and deep reflection. Distinguish between what you think you should want and what truly matters to you, creating clear, meaningful objectives that align with your values and vision.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Clarify personal and professional aspirations</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Align goals with core values and purpose</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Set SMART goals that inspire action</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Overcoming Leadership Dilemmas */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3">
+            <h3 className="text-xl font-semibold text-slate-900">Overcoming Leadership Dilemmas</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              Help coaches navigate complex leadership dilemmas and challenging situations with confidence. Develop frameworks for decision-making, conflict resolution, and managing competing priorities. Learn to make tough calls while maintaining relationships and integrity.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Navigate difficult decisions and trade-offs</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Resolve conflicts and manage team tensions</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Handle competing stakeholder expectations</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Actionable Planning */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-3 md:col-span-2 lg:col-span-1">
+            <h3 className="text-xl font-semibold text-slate-900">Actionable Planning</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              Help coaches put together actionable plans to achieve their goals. Transform aspirations into concrete steps with timelines, milestones, and accountability measures. Learn to break down big goals into manageable actions and track progress effectively.
+            </p>
+            <ul className="text-sm text-slate-600 space-y-1.5 mt-3">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Create step-by-step action plans with clear milestones</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Establish accountability systems and check-ins</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-500 mt-1">•</span>
+                <span>Adapt plans based on progress and changing circumstances</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-8 p-5 rounded-lg bg-amber-50 border border-amber-200">
+          <p className="text-sm text-slate-800 leading-relaxed">
+            <strong className="text-slate-900">How It Works:</strong> These core fundamentals are woven throughout all coaching sessions. Your coach will work with you to assess where you are in each area, identify specific challenges, and develop personalized strategies to strengthen your leadership foundation. Each session builds on the previous one, creating a comprehensive development journey.
+          </p>
+        </div>
+      </section>
+
       {/* Investment Section */}
       <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8 text-center space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Ready to Invest in Your Leadership?</h2>
