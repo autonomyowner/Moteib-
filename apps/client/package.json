@@ -6,13 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "node scripts/fix-exports.js"
   },
   "dependencies": {
     "@livekit/components-react": "^2.9.15",
     "@livekit/components-styles": "^1.1.6",
     "@payloadcms/db-mongodb": "^1.7.5",
-    "@payloadcms/richtext-slate": "^1.5.2",
+    "@payloadcms/richtext-slate": "1.5.2",
     "@reactflow/node-resizer": "^2.0.7",
     "bcryptjs": "^2.4.3",
     "html-to-image": "^1.11.11",
@@ -36,6 +37,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
+    "patch-package": "^8.0.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
