@@ -29,6 +29,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Vercel serverless optimization
+  output: 'standalone',
 };
 
 export default nextConfig;
