@@ -47,8 +47,8 @@ export default async function BlogPageAr() {
                   <div className="p-8 h-full flex flex-col">
                     {/* Date Badge */}
                     <div className="mb-4">
-                      <time dateTime={article.entry.publishedDate} className="inline-block px-4 py-1.5 bg-amber-50 text-amber-700 text-sm font-semibold rounded-full border border-amber-200">
-                        {new Date(article.entry.publishedDate).toLocaleDateString('ar-SA', {
+                      <time dateTime={article.entry.publishedDate || undefined} className="inline-block px-4 py-1.5 bg-amber-50 text-amber-700 text-sm font-semibold rounded-full border border-amber-200">
+                        {new Date(article.entry.publishedDate || Date.now()).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',
