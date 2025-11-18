@@ -95,11 +95,21 @@ export default function Header() {
           >
             {pathname?.startsWith('/ar') ? 'البرامج' : 'Programs'}
           </Link>
-          <Link 
-            href={pathname?.startsWith('/ar') ? '/ar/contact' : '/contact'} 
+          <Link
+            href={pathname?.startsWith('/ar') ? '/ar/blog' : '/blog'}
+            className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+              isActive(pathname?.startsWith('/ar') ? '/ar/blog' : '/blog')
+                ? 'bg-white/20 text-white shadow-inner'
+                : 'text-white/90 hover:bg-white/10 hover:text-white'
+            }`}
+          >
+            {pathname?.startsWith('/ar') ? 'المدونة' : 'Blog'}
+          </Link>
+          <Link
+            href={pathname?.startsWith('/ar') ? '/ar/contact' : '/contact'}
             className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
               isActive(pathname?.startsWith('/ar') ? '/ar/contact' : '/contact')
-                ? 'bg-white/20 text-white shadow-inner' 
+                ? 'bg-white/20 text-white shadow-inner'
                 : 'text-white/90 hover:bg-white/10 hover:text-white'
             }`}
           >
@@ -162,11 +172,22 @@ export default function Header() {
             >
               {pathname?.startsWith('/ar') ? 'البرامج' : 'Programs'}
             </Link>
-            <Link 
-              href={pathname?.startsWith('/ar') ? '/ar/contact' : '/contact'} 
+            <Link
+              href={pathname?.startsWith('/ar') ? '/ar/blog' : '/blog'}
+              className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
+                isActive(pathname?.startsWith('/ar') ? '/ar/blog' : '/blog')
+                  ? 'bg-white/20 text-white shadow-inner'
+                  : 'text-white/90 hover:bg-white/10 active:bg-white/15'
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {pathname?.startsWith('/ar') ? 'المدونة' : 'Blog'}
+            </Link>
+            <Link
+              href={pathname?.startsWith('/ar') ? '/ar/contact' : '/contact'}
               className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
                 isActive(pathname?.startsWith('/ar') ? '/ar/contact' : '/contact')
-                  ? 'bg-white/20 text-white shadow-inner' 
+                  ? 'bg-white/20 text-white shadow-inner'
                   : 'text-white/90 hover:bg-white/10 active:bg-white/15'
               }`}
               onClick={() => setMobileMenuOpen(false)}

@@ -12,6 +12,7 @@ Leadership coaching platform helping managers build balanced lives. Coach Moteib
 - 📈 Three Program Tiers - 6, 9, and 12-month coaching journeys
 - 🇸🇦 Cultural Context - Deep understanding of Saudi Arabian business environment
 - 🤝 Proven Methodology - Evidence-based practices with practical application
+- 📝 Blog & Articles - Bilingual content management system for leadership insights
 
 ## Language Support
 
@@ -27,6 +28,21 @@ MINDSHIFT ARABIA is available in multiple languages:
 - **12-Month Program**: Complete transformation and strategic leadership
 
 Visit `/programs` (English) or `/ar/programs` (Arabic) for detailed program information.
+
+## Blog & Content Management
+
+MINDSHIFT ARABIA includes a full-stack blog system with admin panel:
+
+- **Public Blog**: `/blog` (English) and `/ar/blog` (Arabic)
+- **Admin Panel**: `/admin` for managing articles
+- **Features**:
+  - Bilingual content support (single article, dual translations)
+  - Simple admin authentication
+  - CRUD operations for articles
+  - Published/draft status
+  - Neon PostgreSQL database (free tier)
+
+**Setup Instructions**: See `apps/client/SETUP.md` for complete database and blog setup guide.
 
 ## Key Documentation
 
