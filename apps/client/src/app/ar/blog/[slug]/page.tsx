@@ -15,7 +15,11 @@ export default async function ArticlePageAr({ params }: { params: Promise<{ slug
   }
 
   // Read the markdown file directly
-  const contentPath = join(process.cwd(), 'content', 'articles', slug, 'contentAr.mdoc');
+  // In production (Vercel), cwd is /vercel/path0/apps/client, so go up 2 levels to repo root
+  const rootPath = process.env.NODE_ENV === 'production'
+    ? join(process.cwd(), '../../')
+    : process.cwd();
+  const contentPath = join(rootPath, 'content', 'articles', slug, 'contentAr.mdoc');
   const contentString = await readFile(contentPath, 'utf-8');
 
   // Remove YAML frontmatter if present
